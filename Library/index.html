@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brooklyn Public Library</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./Icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./Icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./Icons/favicon-16x16.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="headercontainer">
+        <h1 class="LibraryName">Brooklyn Public Library</h1>
+        <div class="Subtract-container">
+            <nav class="nav-container">
+                <div class="nav-sub">
+                    <ul class="navlist">
+                        <li class="navitem">
+                            <a href="#About" class="navlink"> About </a>
+                        </li>
+                        <li class="navitem">
+                            <a href="#Favorites" class="navlink"> Favorites </a>
+                        </li>
+                        <li class="navitem">
+                            <a href="#CoffeShop" class="navlink"> CoffeShop </a>
+                        </li>
+                        <li class="navitem">
+                            <a href="#Contacts" class="navlink"> Contacts </a>
+                        </li>
+                        <li class="navitem">
+                            <a href="#LibraryCard" class="navlink"> LibraryCard </a>
+                        </li>
+                    </ul>          
+                </div>
+            </nav>
+            <img src="./Icons/Subtract.svg" alt="Subtract">
+        </div>       
+    </header>
+
+    <main>
+    <section class="welcome-container" id="Welcome"> Welcome  
+        <div class="welcomeText">WELCOME <br> TO THE BROOKLYN <br> LIBRARY
+        </div>
+    </section> 
+    <section class="about-container" id="About"> 
+        <div class="h2-underline"><h2> About </h2></div>
+    <div class="about-text">The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside</div>
+    <div class="about-images"> 
+        <div class="library-images"><img src="./Images/sliders/image 1.png" alt="image 1"> </div>
+        <div class="library-images"><img src="./Images/sliders/image 2.png" alt="image 2"> </div> 
+        <div class="library-images"><img src="./Images/sliders/image 3.png" alt="image 3"></div>
+
+    </div>
+    <div class="about-slider">
+        <div class="slider-cursor">
+            <div class="slider-element" id="activity-slyder"></div>
+        </div>
+        <div class="slider-cursor">
+            <div class="slider-element"></div>
+        </div>
+        <div class="slider-cursor">
+            <div class="slider-element"></div>
+        </div>
+    </div>
+    </section>
+
+    <section class="favorites-container" id="Favorites">  
+        <div class="h2-underline">
+            <h2> Favorites </h2>
+        </div>
+        <div class="favorites-text"> Pick favorites of season </div>
+        <form class="seasons-options" name="season-options">
+            <div class="radio-container">
+                <Input type="radio" name="seasons-radio" checked="checked" id="Winter"> <label class="radio-label" for="Winter"> Winter </label></Input>
+            </div>
+            <div class="radio-container">
+                <Input type="radio" name="seasons-radio" id="Spring"> <label class="radio-label" for="Spring"> Spring </label></Input>
+            </div>
+            <div class="radio-container">
+                <Input type="radio" name="seasons-radio" id="Summer"> <label class="radio-label" for = "Summer"> Summer </label></Input>
+            </div>
+            <div class="radio-container">
+                <Input type="radio" name="seasons-radio" id="Autumn"> <label class="radio-label" for = "Autumn"> Autumn </label></Input>
+            </div>
+        </form>
+        
+        <div class="favorites-items">
+            <div class="favorites-book">
+                <div class="h3-books">
+                    <p>Staff Picks</p>
+                </div>
+                <p class="books-name">
+                    THE BOOK EATERS 
+                </p>
+                <p class="books-author">
+                    By Sunyi Dean
+                </p> 
+                <div class="books-content">
+                    An unusual sci-fi story about a book eater woman who tries desperately to save her dangerous mind-eater son from tradition and certain death. Complete with dysfunctional family values, light Sapphic romance, and a strong, complex protagonist. Not for the faint of heart.
+                </div>
+                <div class="books-image">
+                    <img src="./Images/books/book 1.png" alt="The book eaters image" sizes="200x300"> 
+                </div>
+                <button class="buy"> Buy </button>
+            
+        </div>
+            <div class="favorites-book">
+                <div class="h3-books">
+                    <p>Staff Picks</p>
+                </div>
+                <p class="books-name">
+                    Cackle 
+                </p>
+                <p class="books-author"> 
+                    By Rachel Harrison 
+                </p> 
+                
+                <div class="books-content">
+                    Are your Halloween movies of choice The Witches of Eastwick and Practical Magic? Look no further than here - where a woman recovering from a breakup moves to a quaint town in upstate New York and befriends a beautiful witch.
+                </div>
+                    <div class="books-image">
+                    <img src="./Images/books/book 2.png" alt="The book eaters image" sizes="200x300"> 
+                    </div>
+                <button class="buy"> Buy </button>
+            </div>
+
+            <div class="favorites-book">
+                <div class="h3-books">
+                    <p>Staff Picks</p>
+                </div>
+                <div class="books-name">
+                    <p class="books-name">Poet of the Secular World</p>  
+                    <p class="books-author">By Erich Auerbach </p>
+                </div>
+                <div class="books-content">
+                    Are your Halloween movies of choice The Witches of Eastwick and Practical Magic? Look no further than here - where a woman recovering from a breakup moves to a quaint town in upstate New York and befriends a beautiful witch.
+                </div>
+                    <div class="books-image">
+                    <img src="./Images/books/book 2.png" alt="The book eaters image" sizes="200x300"> 
+                    </div>
+                <button class="buy"> Buy </button>    
+            </div>
+
+            <div class="favorites-book">
+                
+            </div>
+
+
+
+
+
+        </div>
+    </section>
+    <section class="coffeshop-container" id="CoffeShop"> CoffeShop </section>
+    <section class="contacts-container" id="Contacts"> Contacts </section>
+    <section class="librarycard-container" id="LibraryCard"> LibraryCard </section>
+    
+</main>
+    <footer> 
+        <ul>
+            <Li>1</Li>
+            <Li>2</Li>
+            <Li>3</Li>
+        </ul> 
+    </footer>
+</body>
+</html>

@@ -1,0 +1,252 @@
+html {
+    scroll-behavior: smooth; 
+    background-color: #808080;
+    }
+body {
+    display:block;
+    width: 1440px;
+    background-color: yellow;
+    justify-content: center;
+    margin:0px auto;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Forum', cursive;
+}
+.headercontainer {
+    display: flex;
+    background-color: #0C0C0E;
+    justify-content: space-between;
+    padding: 0 20px;
+    }
+.navlist {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: flex-end;
+    }
+
+.nav-container {
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto 20px;
+}
+
+.LibraryName {
+    display: flex;
+    color: #FFFFFF;
+    font-weight: 400;
+    align-items: center;
+    font-size: 30px;
+}
+
+.navlink {
+    padding: 0 15px;
+    transition: .3s;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;;
+    font-weight: 400;
+}
+
+.navitem{
+    font-size: 20px;
+}
+
+.welcome-container {
+    margin: 0 auto;
+height: 600px;
+background-image: url(./Images/Welcome.png);
+}
+
+.welcomeText {
+    display: flex;
+    margin-top: 220px;
+    width: 600px;
+    height: 220px;
+    background-color: #000000;
+    color: #FFFFFF;
+    font-size: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.Subtract-container{
+    display: flex;
+    align-items:center;
+    margin-left: 25px;
+    cursor: pointer;
+}
+.nav-sub {
+    display: flex;
+    align-items:center;  
+}
+
+h2 {
+    font-size: 40px;
+    text-align: center;
+    margin: 20px;
+}
+
+.about-container{
+margin: 0;
+height: 837px;
+}
+
+.h2-underline ::after{
+    display: block;
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    background-color: #0C0C0E;
+    margin: 20px 0 0 680px;
+}
+
+.about-text{
+    font-size: 20px; 
+    text-align: center;
+    margin-top: 60px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+.about-images{
+    display: flex;
+    
+}
+.library-images{
+    width: 450px;
+    justify-content: space-between;
+    margin: 20px 0 0 20px;
+}
+
+.about-slider{
+    display: flex;
+    justify-content: center;
+}
+
+.slider-cursor{
+    display: flex;
+    width: 26PX;
+    height: 26px;
+    margin: 40px 0 40px 0px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.slider-element{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color:#000000;
+}
+#activity-slyder{
+    background-color: #BB945F;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+.favorites-text{
+    margin-top: 60px;
+    margin-left: 20px;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.seasons-options{
+    display: flex;
+    margin: 20px;
+    justify-content: space-between;
+    width: 700px;
+}
+
+.radio-container{
+    padding: 0 5px;
+cursor: pointer;
+font-family: 'Inter';
+font-weight: 400;
+font-size: 20px;
+}
+
+input:checked + label {
+    font-weight: 700;
+  }
+
+  .radio-label{
+    cursor: pointer;
+  }
+
+  .favorites-items {
+    display: flex;
+    margin: 0 60px 40px 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .favorites-book {
+    display: flex;
+    width: 550px;
+    height: 555px;
+    flex-wrap: wrap;
+    border: solid 1px #000000;
+    margin-top: 40px;
+  }
+
+  .h3-books {
+    font-family: 'Forum';
+    font-size: 20px;
+    margin: 0 20px;
+    width: 100%;
+  }
+  .h3-books ::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 1px;
+    background-color: #BB945F;
+    margin: 10px auto;
+  }
+
+  .books-content {
+    max-width: 330px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    text-transform: capitalize;
+    text-align: justify;
+    margin: 0 0 60px 20px;
+    letter-spacing: 1px;
+    align-self: flex-start;
+    line-height: 40px;
+  }
+
+  .books-name {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 20px;
+    text-transform: uppercase;
+  }
+
+  .buy {
+    width: 75px;
+    height: 30px;
+    position: absolute;
+    transform: translate(20px,511px);
+  }
+
+  .books-image {
+    position: inherit;
+    align-self: flex-end;
+    transform: translate(40px,6px);
+  }
+  .books-author{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    margin: 0px 20px 0 20px;
+    width: 100%;
+    font-size: 15px;
+  }
+
