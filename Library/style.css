@@ -163,10 +163,11 @@ height: 837px;
 
 .radio-container{
     padding: 0 5px;
-cursor: pointer;
-font-family: 'Inter';
-font-weight: 400;
-font-size: 20px;
+    cursor: pointer;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
+    accent-color: #000000;
 }
 
 input:checked + label {
@@ -198,6 +199,7 @@ input:checked + label {
     font-size: 20px;
     margin: 0 20px;
     width: 100%;
+    line-height: 40px;
   }
   .h3-books ::after {
     display: block;
@@ -206,7 +208,7 @@ input:checked + label {
     width: 60px;
     height: 1px;
     background-color: #BB945F;
-    margin: 10px auto;
+    margin: 5px auto;
   }
 
   .books-content {
@@ -228,6 +230,7 @@ input:checked + label {
     font-weight: 700;
     margin: 0 20px;
     text-transform: uppercase;
+    line-height: 40px;
   }
 
   .buy {
@@ -235,6 +238,7 @@ input:checked + label {
     height: 30px;
     position: absolute;
     transform: translate(20px,511px);
+    background-color:#FFFFFF;
   }
 
   .books-image {
@@ -248,5 +252,21 @@ input:checked + label {
     margin: 0px 20px 0 20px;
     width: 100%;
     font-size: 15px;
+    line-height: 40px;
   }
 
+  .own {
+    display: flex;
+    width: 75px;
+    height: 30px;
+    position: absolute;
+    transform: translate(20px,511px);
+    border: 1px solid #BB945F;
+    justify-content: center;
+    align-items: center;
+    background-color:#FFFFFF;
+  }
+
+  .own-text {
+    color:#BB945F
+  }
