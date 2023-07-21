@@ -56,6 +56,7 @@ body {
     margin: 0 auto;
 height: 600px;
 background-image: url(./Images/Welcome.png);
+display: flex;
 }
 
 .welcomeText {
@@ -276,7 +277,7 @@ input:checked + label {
     color:#BB945F
   }
 
-  .coffe-shop-info {
+  .coffee-shop-info {
     font-family: Inter;
     font-size: 20px;
     font-weight: 400;
@@ -285,3 +286,68 @@ input:checked + label {
     margin: 40px 20px;
     text-align: center;
   }
+  
+  .drinks-and-desserts{
+    color: #BB945F;
+    font-family: Forum;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    margin: 0;
+  }
+
+  .menu-name {
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    width: 200px;
+  }
+
+  .menu-cost{
+    font-family: Forum;
+    font-size: 20px;
+    line-height: 40px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+  }
+
+  .drinks-foods {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px;
+  }
+
+  .drinks{
+    display: flex;
+    flex-direction: column;
+    height: 520px;
+    justify-content: space-between;
+  }
+  .name-and-cost{
+    display: flex;
+    width: 438px;
+    justify-content: space-between;
+  }
+
+  .coffeeshop-container {
+    margin:66px 0;
+  }
+
+.menu-line {
+  width: 100px;
+  height: 1px;
+  background-color:#BB945F;
+  align-self: center;
+}
+
+.foods {
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+  justify-content: space-between;
+}
