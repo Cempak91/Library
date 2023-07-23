@@ -10,6 +10,7 @@ body {
     margin:0px auto;
     font-family: 'Inter', sans-serif;
     font-family: 'Forum', cursive;
+    min-height: 5246px;
 }
 .headercontainer {
     display: flex;
@@ -364,7 +365,7 @@ input:checked + label {
 }
 
 .contacts-container{
-  height: 414px;
+  height: 505px;
   margin: 20px;
 }
 
@@ -413,6 +414,11 @@ input:checked + label {
   margin-top: 0;
 }
 
+.tel-number {
+  text-decoration: none;
+  color:#000000;
+}
+
 .library-director{
 font-family: Inter;
 font-size: 20px;
@@ -426,3 +432,130 @@ margin-top: -40px;
   width: 100%;
   height: 100%;
 }
+
+.librarycard-container {
+  margin-top: 60px;
+  height: 614px;
+}
+
+.Card-information {
+  display: flex;
+  margin: 61px 0 0 20px;
+  justify-content: space-between;
+}
+
+.YourLibraryCard {
+  font-family: Inter;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+  text-align: center;
+  margin-top: 0;
+  }
+
+.LibraryCard-and-button{
+  display: flex;
+  width: 600px;
+  height: 386px;
+  border: 3px solid #BB945F;
+  background: #FFF;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .LibraryCard-form {
+    width: 560px;
+    height: 272px;
+    background: #BB945F;
+    margin: 20px;
+  }
+  .form-name {
+    font-family: Forum;
+    font-size: 30px;
+    line-height: 50px;
+    letter-spacing: 0.6px;
+    margin: 0 20px 20px 20px;
+    padding-top: 20px;
+  }
+
+  .reader-name {
+    width: 500px;
+    height: 66px;
+    margin: 0 20px 25px 20px;
+    border-radius:10px;
+    padding-left: 20px;
+    font-family: Forum;
+    font-size: 30px;
+    line-height: 66px;
+    letter-spacing: 0.6px;
+  }
+
+  .reader-name::placeholder {
+    color: #8E8E8E;
+    font-family: Forum;
+    font-size: 30px;
+    line-height: 66px;
+    letter-spacing: 0.6px;
+  }
+
+  .librarycard-button {
+    width: 242px;
+    height: 44px;
+    border-radius: 2px;
+    border: 1px solid #0C0C0E;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: inline-flex;
+    padding: 10px 37px;
+    align-items: flex-end;
+    background-color:#FFFFFF
+  }
+
+  .about-autorisation {
+    width: 456px;
+    height: 253px;
+    margin-right: 20px;
+  }
+
+  .get-card {
+    font-family: Forum;
+    font-size: 30px;
+    letter-spacing: 0.6px;
+    text-align: right;
+  }
+
+  .about-get-card {
+    width: 456px;
+    text-align: right;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 1.2px;
+    margin: 35px 0;
+  }
+
+  .login-and-sign {
+    display: flex;
+    justify-content: right;
+  }
+
+  .sign {
+    width: 75px;
+    height: 30px;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    border: 1px solid #0C0C0E;
+    margin-left: 20px;
+    background-color:#FFFFFF;
+  }
