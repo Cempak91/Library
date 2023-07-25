@@ -41,7 +41,7 @@ body {
 
 .navlink {
     padding: 0 15px;
-    transition: .3s;
+    transition: all 3s ease;
     color: #FFFFFF;
     text-decoration: none;
     font-family: 'Inter', sans-serif;;
@@ -50,6 +50,13 @@ body {
 
 .navitem{
     font-size: 20px;
+    transition: all 3s;
+}
+
+.navitem:hover{
+  text-decoration: underline #FFFFFF;
+  background-color: #BB945F;
+  transition: all 2s;
 }
 
 .welcome-container {
@@ -65,11 +72,20 @@ display: flex;
     width: 600px;
     height: 220px;
     background-color: #000000;
-    color: #FFFFFF;
-    font-size: 40px;
-    text-align: center;
     justify-content: center;
     align-items: center;
+}
+
+.name-text {
+  color: #FFFFFF;
+  text-align: center;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px; /* 125% */
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 .Subtract-container{
@@ -259,6 +275,8 @@ input:checked + label {
   .books-image {
     position: absolute;
     transform: translate(390px,256px);
+    width: 200px;
+    height: 300px;
   }
   .books-author{
     font-family: 'Inter', sans-serif;
@@ -279,11 +297,9 @@ input:checked + label {
     justify-content: center;
     align-items: center;
     background-color:#FFFFFF;
-  }
-
-  .own-text {
     color:#BB945F
   }
+
 
   .coffee-shop-info {
     font-family: Inter;
