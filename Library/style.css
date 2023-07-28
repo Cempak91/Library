@@ -103,6 +103,7 @@ body {
 .nav-sub {
     display: flex;
     align-items:center;  
+    margin-right: 10px;
 }
 
 h2 {
