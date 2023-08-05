@@ -3,14 +3,18 @@ html {
     background-color: #808080;
     }
 body {
-    display:block;
-    width: 1440px;
-    justify-content: center;
-    margin:0px auto;
-    font-family: 'Inter', sans-serif;
-    font-family: 'Forum', cursive;
     background-color:#FFFFFF;
+    margin: 0;
 }
+.bodyWrapper {
+  display:block;
+  max-width: 1440px;
+  justify-content: center;
+  margin:0px auto;
+  font-family: 'Inter', sans-serif;
+  font-family: 'Forum', cursive;
+}
+
 .headercontainer {
     display: flex;
     background-color: #0C0C0E;
@@ -67,21 +71,47 @@ body {
 .welcome-container {
     margin: 0 auto;
   height: 600px;
-  background-image: url(./Images/Welcome.png);
   display: flex;
+}
+
+.forWelcomeImage {
+  max-width:1440px;
+  height: 600px;
+}
+
+.welcomeImage {
+  object-fit: cover;
+  height: 600px;
+  min-width: 100vW;
+  z-index: 0;
 }
 
 .welcomeText {
     display: flex;
+    position: absolute;
     margin-top: 220px;
     width: 600px;
     height: 220px;
     background-color: #000000;
     justify-content: center;
     align-items: center;
-    
+    z-index: 50;
 }
 
+.gradient {
+display: flex;
+}
+
+.gradient::before {
+  content: '';
+  z-index: 10;
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  display: block;
+  position: absolute;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);
+}
 .name-text {
   color: #FFFFFF;
   text-align: center;
@@ -114,6 +144,9 @@ h2 {
     line-height: 40px;
     letter-spacing: 2px;
     text-transform: capitalize;
+    font-style: normal;
+    font-weight: 400;
+
 }
 
 .about-container{
@@ -128,26 +161,39 @@ height: 810px;
     width: 50px;
     height: 1px;
     background-color: #0C0C0E;
-    margin: 20px 0 0 680px;
+    margin: 20px 0 0 45%;
 }
 
 .about-text{
-  font-size: 20px;
   text-align: center;
-  margin-top: 67px;
-  margin-bottom: 8px;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
   font-weight: 400;
+  line-height: 40px; 
+  margin-top: 60px;
 }
 
 .about-images{
     display: flex;
-    
+    max-width: 100%;
+    margin: 20px 0 0 20px;
+    justify-content: space-around;
 }
-.library-images{
-    width: 450px;
-    justify-content: space-between;
-    margin: 20px 5px 0 20px;
+.library-images1{
+    margin-right: 20px;
+    object-fit: cover;
+    width: 32%;
+}
+.library-images2{
+    margin-right: 20px;
+    object-fit: cover;
+    width: 32%;
+}
+.library-images3{
+    margin-right: 20px;
+    object-fit: cover;
+    width: 32%;
 }
 
 .about-slider{
@@ -187,7 +233,7 @@ height: 810px;
 .seasons-options{
   display: flex;
   margin: 42px 30px 2px 20px;
-  width: 715px;
+  width: 48%;
   justify-content: space-between;
 }
 
@@ -327,9 +373,10 @@ input:checked + label {
     font-size: 20px;
     font-weight: 400;
     line-height: 40px;
-    letter-spacing: 2px;
+    letter-spacing: 1.8px;
     margin: 55px 20px;
     text-align: center;
+    font-style: normal;
   }
   
   .drinks-and-desserts{
@@ -374,6 +421,12 @@ input:checked + label {
     justify-content: space-between;
   }
   .name-and-cost{
+    display: flex;
+    width: 438px;
+    justify-content: space-between;
+  }
+
+  .name-and-cost2{
     display: flex;
     width: 438px;
     justify-content: space-between;
@@ -440,7 +493,7 @@ input:checked + label {
 }
 .contact-map {
   display: flex;
-  min-width: 696px;
+  width: 50%;
   height: 410px;
 
 }
@@ -498,6 +551,8 @@ margin-top: -40px;
   letter-spacing: 0.6px;
   text-align: center;
   margin-top: 0;
+  font-style: normal;
+  line-height: normal;
   }
 
 .LibraryCard-and-button{
@@ -679,9 +734,9 @@ margin-top: -40px;
   }
 
   .footer-line{
-    width: 1400px;
+    width: 96%;
     border:1px solid #FFFFFF;
-    margin: 0 20px;
+    margin-left: 20px;
   }
 
   .about-me {
@@ -733,4 +788,12 @@ margin-top: -40px;
     cursor: pointer;
     text-decoration: none;
     margin-left: 60px;
+  }
+
+  .map {
+    object-fit: cover;
+  }
+  
+  .imageOfLibrary {
+    object-fit: cover;
   }

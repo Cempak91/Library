@@ -1,0 +1,139 @@
+@media (min-width:1441px) {
+    .welcomeImage{
+        min-width: 1440px
+    }
+}
+
+@media (max-width: 1400px) {
+    .library-images3 {
+        display: none;
+    }
+
+}
+
+@media (max-width: 1250px) {
+    .favorites-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+@media (max-width:1110px) {
+    .navlist {
+        padding: 0;
+    }
+    .nav-container {
+        margin-left: 0;
+    }
+    .library-images2 {
+        display: none;
+    }
+    .library-images1 {
+        margin = 0;
+        margin-top: =20px;
+        width: 100%;
+        display: contents;
+    }
+    .about-images {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+@media (max-width:1043px) {
+    .nav-sub {
+        display: none;
+    }
+    .Subtract {
+        margin-right: 85px;
+    }
+}
+
+@media (max-width:1024px) {
+    .contacts-and-map {
+        flex-direction: column;
+    }
+
+    .Card-information {
+        flex-direction: column;
+        align-items: center;
+    }
+    .drinks-foods {
+        flex-direction: column;
+    }
+    .contacts-container {
+        height: auto;
+    }
+    .librarycard-container {
+        height: auto;
+    }
+    .contact-map {
+        width: 100%;
+        margin-top: 100px;
+    }
+    .about-autorisation {
+        margin-top: 25px;
+    }
+    .foods {
+        margin-top: 40px;
+    }
+    .get-card {
+        text-align: center;
+    }
+    .about-get-card {
+        text-align: center;
+    }
+    .login-and-sign {
+        justify-content: center;
+    }
+}
+
+@media (max-width:768px) {
+    .about-text{
+        margin:60px 20px;
+    }
+    .about-images {
+        margin-top: -39px;
+        margin-bottom: -10px;
+    }
+    .favorites-container {
+        margin-top: 53px;
+    }
+    .seasons-options{
+        margin-left: 10px;
+        width: 93%;
+    }
+    .coffeeshop-container {
+        margin-top: 50px;
+    }
+    .favorites-text {
+        margin-left: 20px;
+    }
+    .name-and-cost2{
+        width: 64.5%;
+    }
+    .contact-header{
+        margin-top: 0;
+    }
+    .contact-phones{
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+    .library-director{
+        margin-top: -20px;
+    }
+    .contact-map{
+        width: 95%;
+        margin-top: 82px;
+        padding: 0 20px;
+    }
+    .Card-information{
+        margin-right: 20px;
+    }
+    .librarycard-button{
+        padding: 0;
+    }
+    .about-autorisation{
+        margin-right: 0;
+    }
+}
