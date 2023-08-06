@@ -6,6 +6,10 @@ body {
     background-color:#FFFFFF;
     margin: 0;
 }
+.body._lock{
+  overflow: hidden;
+}
+
 .bodyWrapper {
   display:block;
   max-width: 1440px;
@@ -69,7 +73,7 @@ body {
 }
 
 .welcome-container {
-    margin: 0 auto;
+  margin: 0 auto;
   height: 600px;
   display: flex;
 }
@@ -95,7 +99,7 @@ body {
     background-color: #000000;
     justify-content: center;
     align-items: center;
-    z-index: 50;
+    z-index: 10;
 }
 
 .gradient {
@@ -128,7 +132,9 @@ display: flex;
     display: flex;
     align-items:center;
     margin-left: 25px;
-    cursor: pointer;
+}
+.Subtract {
+  cursor: pointer;
 }
 .nav-sub {
     display: flex;
@@ -797,3 +803,18 @@ margin-top: -40px;
   .imageOfLibrary {
     object-fit: cover;
   }
+  
+  .burger {
+    padding: 0;
+    margin: 0;
+    display: none;
+    cursor: pointer;
+    }
+
+    .burgerExit {
+      padding: 0;
+      margin: 0;
+      width: 32px;
+      height: 32px;
+      display: none;
+    }
