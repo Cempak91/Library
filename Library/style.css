@@ -6,7 +6,7 @@ body {
     background-color:#FFFFFF;
     margin: 0;
 }
-.body._lock{
+body.lock{
   overflow: hidden;
 }
 
@@ -817,4 +817,9 @@ margin-top: -40px;
       width: 32px;
       height: 32px;
       display: none;
+      cursor: pointer;
+    }
+
+    .burgerExit.open {
+      display: block;
     }
