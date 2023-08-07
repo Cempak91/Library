@@ -5,6 +5,7 @@ const navSub = document.querySelector(".nav-sub");
 const navLink = document.querySelectorAll(".navlink");
 const menuExit = document.querySelector(".burgerExit");
 
+
 console.log (navMenu);
 console.log(navSub);
 if (navMenu) {
@@ -15,6 +16,18 @@ if (navMenu) {
         menuExit.classList.toggle("open");
     });
 };
+
+
+ //скрываем меню при клике
+document.addEventListener('click', (e) => {
+    const click = e.composedPath().includes(navMenu || navSub);
+    if ( !click ) {
+        navMenu.classList.remove("_active");
+        navSub.classList.remove("_active");
+        document.body.classList.remove("lock");
+        menuExit.classList.remove("open");
+    }
+  });
 
 for (let i=0; i<navLink.length; i++) {
     navLink[i].addEventListener("click",function (e){
@@ -33,3 +46,18 @@ if (menuExit) {
         menuExit.classList.remove("open");
     });
 };
+
+
+if (navMenu.classList.contains("_active")===true){
+    document.addEventListener("click", function (e) {
+        const target = e.target;
+        if (!target.closest(".nav-sub") && !target.closest(".burgerExit")){
+            navMenu.classList.remove("_active");
+            navSub.classList.remove("_active");
+            document.body.classList.remove("lock");
+            menuExit.classList.remove("open");
+            alert ("click");
+        };
+});
+};
+
