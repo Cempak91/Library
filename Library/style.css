@@ -152,7 +152,7 @@ h2 {
     text-transform: capitalize;
     font-style: normal;
     font-weight: 400;
-
+    position: relative;
 }
 
 .about-container{
@@ -167,7 +167,7 @@ height: 810px;
     width: 50px;
     height: 1px;
     background-color: #0C0C0E;
-    margin: 20px 0 0 45%;
+    margin: 20px 0 0 47%;
 }
 
 .about-text{
@@ -184,8 +184,10 @@ height: 810px;
     display: flex;
     max-width: 100%;
     margin: 20px 0 0 20px;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
 }
+
 .library-images1{
     margin-right: 20px;
     object-fit: cover;
@@ -831,3 +833,11 @@ margin-top: -40px;
     .burgerExit.open {
       display: block;
     }
+
+    .carret {
+      display: none;
+      width: 80px;
+      height: 80px;
+      margin: auto;
+    }
+
