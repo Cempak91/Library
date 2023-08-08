@@ -1,4 +1,4 @@
-
+console.log("50/50 all is done");
 /*Меню бургера*/
 const navMenu = document.querySelector(".burger");
 const navSub = document.querySelector(".nav-sub");
@@ -6,8 +6,6 @@ const navLink = document.querySelectorAll(".navlink");
 const menuExit = document.querySelector(".burgerExit");
 
 
-console.log (navMenu);
-console.log(navSub);
 if (navMenu) {
     navMenu.addEventListener("click", function (e) {
         navMenu.classList.toggle("_active");
