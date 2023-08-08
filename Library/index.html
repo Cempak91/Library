@@ -8,15 +8,17 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./Icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./Icons/favicon-16x16.png">
     <link rel="stylesheet" href="style.css">
+    <link rel ="stylesheet" href = "adapt.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <script src="./index.js"></script>
+    <script defer src="./index.js"></script>
 </head>
 <body>
+    <div class="bodyWrapper">
     <header class="headercontainer">
         <h1 class="LibraryName">Brooklyn Public Library</h1>
-        <div class="Subtract-container">
+            <div  class="Subtract-container">
             <nav class="nav-container">
                 <div class="nav-sub">
                     <ul class="navlist">
@@ -33,28 +35,42 @@
                             <a href="#Contacts" class="navlink"> Contacts </a>
                         </li>
                         <li class="navitem">
-                            <a href="#LibraryCard" class="navlink"> LibraryCard </a>
+                            <a href="#LibraryCard" class="navlink"> Library Card </a>
                         </li>
                     </ul>          
                 </div>
             </nav>
-            <img src="./Icons/Subtract.svg" alt="Subtract">
-        </div>       
+            <div class="Subtract">
+                <img src="./Icons/Subtract.svg" alt="Subtract">
+            </div>
+            <div class="burger">
+                <img src="./Icons/burger.svg" alt="Burger-menu">
+            </div>
+            <div class="burgerExit">
+                <img src="./Icons/burger-exit.svg" alt="BurgerExit">
+            </div>
+        </div>
     </header>
 
     <main>
     <section class="welcome-container" id="Welcome">  
-        <div class="welcomeText"><h3 class="name-text"> WELCOME <br> TO THE BROOKLYN <br> LIBRARY </h3>
+            <div class="gradient">
+        <div class="forWelcomeImage">
+            <img class="welcomeImage" src="./Images/Welcomejpg.jpg" alt="Welcome Background">
+        </div>
+            <div class="welcomeText"><h3 class="name-text"> WELCOME <br> TO THE BROOKLYN <br> LIBRARY </h3>
+            </div>
         </div>
     </section> 
     <section class="about-container" id="About"> 
         <div class="h2-underline"><h2> About </h2></div>
     <div class="about-text">The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside</div>
     <div class="about-images"> 
-        <div class="library-images"><img src="./Images/sliders/image_1.png" alt="image 1"> </div>
-        <div class="library-images"><img src="./Images/sliders/image_2.png" alt="image 2"> </div> 
-        <div class="library-images"><img src="./Images/sliders/image_3.png" alt="image 3"></div>
-
+        <div class="carret"><img src="./Icons/Carret_Left.svg" alt="Carret Left"></div>
+        <div class="library-images1"><img class="imageOfLibrary" src="./Images/sliders/image_1.png" alt="image 1"> </div>
+        <div class="library-images2"><img class="imageOfLibrary" src="./Images/sliders/image_2.png" alt="image 2"> </div> 
+        <div class="library-images3"><img class="imageOfLibrary" src="./Images/sliders/image_3.png" alt="image 3"></div>
+        <div class="carret"><img src="./Icons/Carret_Right.svg" alt="Carret Right"></div>
     </div>
     <div class="about-slider">
         <div class="slider-cursor">
@@ -66,7 +82,12 @@
         <div class="slider-cursor">
             <div class="slider-element"></div>
         </div>
-    </div>
+        <div class="slider-cursor">
+            <div class="slider-element"></div>
+        </div>
+        <div class="slider-cursor">
+            <div class="slider-element"></div>
+        </div>
     </section>
 
     <section class="favorites-container" id="Favorites">  
@@ -172,7 +193,7 @@
         </div>
         <p class="coffee-shop-info">
             In our library, we have of cozy coffee shop, welcoming in customers with frothy cappuccinos and friendly conversation.
-            <br> You can get a favorite book and read in coffee shop. Our barista to cook you best coffee, and also you can try desserts from bakery.
+            <br>You can get a favorite book and read in coffee shop. Our barista to cook you best coffee, and also you can try desserts from bakery.
         </p>
         <div class="drinks-foods">
                 
@@ -235,7 +256,7 @@
         </div>
             <div class="foods">
                 <p class="drinks-and-desserts"> Desserts & Cakes  </p>
-                <div class="name-and-cost">
+                <div class="name-and-cost2">
                     <div class="drink-name">
                         Forest Gateau
                     </div>
@@ -244,7 +265,7 @@
                         $16
                     </div>
                 </div>
-                <div class="name-and-cost">
+                <div class="name-and-cost2">
                     <div class="drink-name">
                         Blue Moon
                     </div>
@@ -253,7 +274,7 @@
                         $16
                     </div>
                 </div>
-                <div class="name-and-cost">
+                <div class="name-and-cost2">
                     <div class="drink-name">
                         Truffle Cake
                     </div>
@@ -262,7 +283,7 @@
                         $15
                     </div>
                 </div>
-                <div class="name-and-cost">
+                <div class="name-and-cost2">
                     <div class="drink-name">
                         Chocolate Cake
                     </div>
@@ -271,7 +292,7 @@
                         $18
                     </div>
                 </div>
-                <div class="name-and-cost">
+                <div class="name-and-cost2">
                     <div class="drink-name">
                         Poet’s Dream Cake
                     </div>
@@ -280,7 +301,7 @@
                         $16
                     </div>
                 </div>
-                <div class="name-and-cost">
+                <div class="name-and-cost2">
                     <div class="drink-name">
                         Pineapple Cake
                     </div>
@@ -339,7 +360,7 @@
                     Get a reader card
                 </div>
                 <div class="about-get-card">
-                    You will be able to see a reader card after <br> logging into account or you can register a new account
+                    You will be able to see a reader card after logging into account or you can register a new account
                 </div>
                 <div class="login-and-sign">
                     <button class="sign"> Sign Up </button>
@@ -383,5 +404,6 @@
             <a class="my-name" href="https://github.com/Cempak91"> Viktor </a>
         </div>                    
     </footer>
+    </div>
 </body>
 </html>
