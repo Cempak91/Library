@@ -50,7 +50,7 @@
 
 @media (max-width:1180px) {
     .Subtract {
-        margin-right: 40px;
+        margin-right: 45px;
     }
 
     .navlist {
@@ -67,8 +67,8 @@
     .nav-sub {
         position: fixed;
         width: 332px;
-        height: 550px;
-        background-color:#000000;
+        height: 570px;
+        background-color: #0C0C0E;
         justify-content: center;
         right: 100%;
         margin: 0;
