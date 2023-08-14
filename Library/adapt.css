@@ -70,14 +70,17 @@
         height: 570px;
         background-color: #0C0C0E;
         justify-content: center;
-        right: 100%;
+        transform: translateX(100%);
+        /*right: 100%;*/
         margin: 0;
         z-index: 11;
-        transition: right 0.2s ease 0s;
+        transition: all 0.2s ease 0s;
     }
 
     .nav-sub._active {
-        right: 0;
+/*        right: 0;*/
+    transform: translateX(-53%);
+    transition: all 0.2s ease 0s;
     }
 
     .burger._active {
@@ -212,5 +215,10 @@
         margin-top: 7px;
     }
 
+    .carret {
+        width: 24px;
+        height: 24px;
+        margin: 7.5%;
+    }
 
 }
