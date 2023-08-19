@@ -59,3 +59,84 @@ if (navMenu.classList.contains("_active")===true){
 });
 };
 
+//Пробуем делать слайдер
+const libraryImages = document.querySelector ('.slidersImages');
+const sliderElements = document.querySelectorAll ('.slider-element');
+const leftCarret = document.querySelector('.carret.left');
+const rightCarret = document.querySelector('.carret.right');
+let position =0,
+    sliderElementsIndex=0;
+
+sliderElements.forEach((key, index) => {
+    key.addEventListener("click", function () {
+        if(window.matchMedia("(max-width: 768px)").matches){
+            position = 100* index;
+            libraryImages.style.left = -position + '%';
+        }else{
+        position = 470 * index;
+        libraryImages.style.left = -position + 'px';
+        };
+        thisSlide(sliderElementsIndex);
+        sliderElementsIndex = index;
+        sliderElements.forEach((key) => { //удаляем класс active у всех элементов слайдера
+            key.classList.remove("active");
+    });
+    sliderElements[index].classList.add("active"); //добавляем класс к элементу с кликом
+    if(sliderElements[sliderElements.length-1].classList.contains("active")) { //блокируем стрелки при активации крайних кружочков слайдера
+        rightCarret.setAttribute("disabled", "");
+    }else if (rightCarret.hasAttribute("disabled")){
+        rightCarret.removeAttribute("disabled");  
+    };
+    if(sliderElements[0].classList.contains("active")) {
+        leftCarret.setAttribute("disabled", "");
+    } else if (leftCarret.hasAttribute("disabled")){
+        leftCarret.removeAttribute("disabled");  
+    };    
+});
+});
+
+//движение галереи
+
+
+const nextSlide = () => {
+    if (position < ((sliderElements.length -2) * 100)) {
+    position+=100;
+    sliderElementsIndex++;
+    libraryImages.style.left = -position + '%';
+    if (rightCarret.hasAttribute("disabled")){
+      rightCarret.removeAttribute("disabled");  
+    }
+    } else if (position < ((sliderElements.length -1) * 100)) {
+        position+=100;
+        sliderElementsIndex++;
+        libraryImages.style.left = -position + '%';
+        rightCarret.setAttribute("disabled", "");
+    };
+    thisSlide(sliderElementsIndex);
+    console.log(sliderElements[sliderElements.length-1].classList.contains("active"))
+};
+
+const prevSlide = () => {
+    if (position >0) {
+    position-=100;
+    sliderElementsIndex--;
+    libraryImages.style.left = -position + '%';
+    if (leftCarret.hasAttribute("disabled")){
+        leftCarret.removeAttribute("disabled");  
+      }
+    } else leftCarret.setAttribute("disabled", "");
+        thisSlide(sliderElementsIndex);
+};
+
+const thisSlide =(index) => {
+    for (let elem of sliderElements) {
+        elem.classList.remove('active');
+    };
+    sliderElements[index].classList.add('active');
+};
+
+rightCarret.addEventListener('click', nextSlide);
+leftCarret.addEventListener('click', prevSlide);
+
+
+

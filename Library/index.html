@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <script defer src="./index.js"></script>
+
 </head>
 <body>
     <div class="bodyWrapper">
@@ -66,15 +66,19 @@
         <div class="h2-underline"><h2> About </h2></div>
     <div class="about-text">The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside</div>
     <div class="about-images"> 
-        <div class="carret"><img src="./Icons/Carret_Left.svg" alt="Carret Left"></div>
-        <div class="library-images1"><img class="imageOfLibrary" src="./Images/sliders/image_1.png" alt="image 1"> </div>
-        <div class="library-images2"><img class="imageOfLibrary" src="./Images/sliders/image_2.png" alt="image 2"> </div> 
-        <div class="library-images3"><img class="imageOfLibrary" src="./Images/sliders/image_3.png" alt="image 3"></div>
-        <div class="carret"><img src="./Icons/Carret_Right.svg" alt="Carret Right"></div>
+        <div class="carret left" disabled><img src="./Icons/Carret_Left.svg" alt="Carret Left"></div>
+            <div class="slidersImages">
+                <div class="library-images1"><img class="imageOfLibrary" src="./Images/sliders/image_1.png" alt="image 1"> </div>
+                <div class="library-images2"><img class="imageOfLibrary" src="./Images/sliders/image_2.png" alt="image 2"> </div> 
+                <div class="library-images3"><img class="imageOfLibrary" src="./Images/sliders/image_3.png" alt="image 3"></div>
+                <div class="library-images4"><img class="imageOfLibrary" src="./Images/sliders/image_4.png" alt="image 4"></div>
+                <div class="library-images5"><img class="imageOfLibrary" src="./Images/sliders/image_5.png" alt="image 5"></div>
+            </div>
+        <div class="carret right"><img src="./Icons/Carret_Right.svg" alt="Carret Right"></div>
     </div>
     <div class="about-slider">
         <div class="slider-cursor">
-            <div class="slider-element" id="activity-slyder"></div>
+            <div class="slider-element active"></div>
         </div>
         <div class="slider-cursor">
             <div class="slider-element"></div>
@@ -405,5 +409,6 @@
         </div>                    
     </footer>
     </div>
+    <script defer src="./index.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@ body.lock{
 
 .bodyWrapper {
   display:block;
-  max-width: 1440px;
+  width: 100%;
   justify-content: center;
   margin:0px auto;
   font-family: 'Inter', sans-serif;
@@ -183,25 +183,51 @@ height: 810px;
 .about-images{
     display: flex;
     max-width: 100%;
-    margin: 20px 0 0 20px;
-    justify-content: space-between;
     align-items: center;
+    overflow: hidden;
+    margin-right: 20px;
+    position: relative;
+}
+
+.slidersImages{
+  display: grid;
+  grid-auto-columns: minmax(33.3334%, 450px);
+  grid-auto-flow: column;
+  grid-template-rows: 1fr;
+  position: relative;
+  left: 0;
+  width: 100%;
+  margin: 20px 0 0 20px;
+  transition: all 0.5s;
+  box-sizing: border-box;
 }
 
 .library-images1{
     margin-right: 20px;
     object-fit: cover;
-    width: 32%;
 }
+
 .library-images2{
     margin-right: 20px;
     object-fit: cover;
-    width: 32%;
 }
+
 .library-images3{
     margin-right: 20px;
     object-fit: cover;
-    width: 32%;
+}
+
+
+
+
+.library-images4{
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.library-images5{
+  margin-right: 20px;
+  object-fit: cover;
 }
 
 .about-slider{
@@ -232,7 +258,7 @@ height: 810px;
     border-radius: 50%;
     background-color:#000000;
 }
-#activity-slyder{
+.slider-element.active{
     background-color: #BB945F;
     width: 16px;
     height: 16px;
@@ -839,8 +865,11 @@ margin-top: -40px;
 
     .carret {
       display: none;
-      width: 80px;
-      height: 80px;
       margin: auto;
+      cursor: pointer;
+      z-index: 3;
     }
 
+    .carret[disabled] {
+      cursor:inherit;      
+    }
