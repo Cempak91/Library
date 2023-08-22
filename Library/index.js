@@ -4,7 +4,8 @@ const navMenu = document.querySelector(".burger");
 const navSub = document.querySelector(".nav-sub");
 const navLink = document.querySelectorAll(".navlink");
 const menuExit = document.querySelector(".burgerExit");
-
+const unAuthSub = document.querySelector('.Subtract.notAuth');
+const unAuthProfile = document.querySelector('.profileForm.notAuth');
 
 if (navMenu) {
     navMenu.addEventListener("click", function (e) {
@@ -18,13 +19,18 @@ if (navMenu) {
 
  //скрываем меню при клике
 document.addEventListener('click', (e) => {
-    const click = e.composedPath().includes(navMenu || navSub);
-    if ( !click ) {
+    const clickNav = e.composedPath().includes(navMenu || navSub);
+    const clickSub = e.composedPath().includes(unAuthProfile || unAuthSub);
+    if ( !clickNav ) {
         navMenu.classList.remove("_active");
         navSub.classList.remove("_active");
         document.body.classList.remove("lock");
         menuExit.classList.remove("open");
-    }
+    } else
+    if( !clickSub && unAuthProfile.classList.contains('activity')) {
+        unAuthProfile.classList.remove('activity');
+
+    };
   });
 
 for (let i=0; i<navLink.length; i++) {
@@ -54,7 +60,6 @@ if (navMenu.classList.contains("_active")===true){
             navSub.classList.remove("_active");
             document.body.classList.remove("lock");
             menuExit.classList.remove("open");
-            alert ("click");
         };
 });
 };
@@ -113,7 +118,6 @@ const nextSlide = () => {
         rightCarret.setAttribute("disabled", "");
     };
     thisSlide(sliderElementsIndex);
-    console.log(sliderElements[sliderElements.length-1].classList.contains("active"))
 };
 
 const prevSlide = () => {
@@ -181,4 +185,10 @@ radioButton.forEach(button => {
 });
 
 
+//меню профиля без авторизации
 
+
+
+unAuthSub.addEventListener('click',() => {
+    unAuthProfile.classList.toggle('activity');
+});

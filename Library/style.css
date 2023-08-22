@@ -137,6 +137,7 @@ display: flex;
 .Subtract {
   cursor: pointer;
 }
+
 .nav-sub {
     display: flex;
     align-items:center;  
@@ -945,5 +946,70 @@ margin-top: -40px;
 
     .hidden {
       display: none;
+    }
+
+    .profileForm {
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      width: 80px;
+      height: 115px;
+      background: #FFFFFF;
+      z-index: 11;
+      transition: all 1s ease;
+      opacity: 0;
+      transform: rotateX(3000deg);
+    }
+    
+    .profileForm.activity {
+      opacity: 1;
+      transform: rotateX(0deg)
+    }
+
+    .profileList {
+      list-style: none;
+      color: #000;
+      text-align: center;
+      font-family: Inter;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px; /* 133.333% */
+      padding: 0;
+
+    }
+
+    .profile {
+      color: #000000;
+      font-weight: 700;
+      margin-bottom: 20px;
+      margin-top: -10px;
+    }
+
+    .profile::after {
+      content: "";
+      position: relative;
+      width: 40px;
+      height: 1px;
+      background-color:#BB945F;
+      display: block;
+      left: 25%;
+      top: 5px;
+    }
+    
+    .myProfile,
+    .logOut,
+    .registered {
+      cursor: pointer;
+    }
+
+    .logIn,
+    .myProfile {
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .registered {
+      cursor: pointer;
     }
 
