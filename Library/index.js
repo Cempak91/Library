@@ -138,5 +138,47 @@ const thisSlide =(index) => {
 rightCarret.addEventListener('click', nextSlide);
 leftCarret.addEventListener('click', prevSlide);
 
+//Книги и сезоны
+const radioButton = document.querySelectorAll('input[type="radio"]');
+const books = document.querySelectorAll('.favorites-book');
+const winterBooks = [books[0], books[1], books[2], books[3]];
+const springBooks = [books[4], books[5], books[6], books[7]];
+const summerBooks = [books[8], books[9], books[10], books[11]];
+const autumnBooks = [books[12], books[13], books[14], books[15]];
+
+radioButton.forEach(button => {
+    button.addEventListener('change', () => {
+        for (let elem of books) {
+        elem.classList.add ('fade-out');
+        elem.classList.add ('hidden');
+            
+        };
+        if(radioButton[0].checked === true) {       
+            for (let winter of winterBooks) {
+                winter.classList.remove('fade-out');
+                winter.classList.add('fade-in');
+                winter.classList.remove ('hidden');
+            };
+        } else if (radioButton[1].checked) {
+            for (let spring of springBooks) {
+                spring.classList.remove('fade-out');
+                spring.classList.add('fade-in');
+                spring.classList.remove ('hidden');
+            }
+        }else if (radioButton[2].checked) {
+            for (let summer of summerBooks) {
+                summer.classList.remove('fade-out');
+                summer.classList.add('fade-in');
+                summer.classList.remove ('hidden');
+            }
+        }else 
+            for (let autumn of autumnBooks) {
+                autumn.classList.remove('fade-out');
+                autumn.classList.add('fade-in');
+                autumn.classList.remove ('hidden');
+            };
+    });
+});
+
 
 
