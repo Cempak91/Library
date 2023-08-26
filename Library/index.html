@@ -41,7 +41,7 @@
                 </div>
             </nav>
             <div class="Subtract notAuth">
-              <img src="./Icons/Subtract.svg" alt="Subtract">
+              <img src="./Icons/Subtract.svg" alt="Subtract" class="unAuthImg">
             </div>
             <div class="profileForm notAuth">
                 <ul class="profileList">
@@ -625,6 +625,117 @@
             <a class="my-name" href="https://github.com/Cempak91"> Viktor </a>
         </div>                    
     </footer>
+    <div class="popup">
+        <div class="popup-login" id="login">
+            <img src="./Icons/close_btn.svg" alt="close_btn" class="close_btn">
+            <span class="popup_header">Login</span>
+            <span class="popup_text">E-mail or readers card</span>
+            <input class="email_input">
+            <span class="popup_text"> Password </span>
+            <input class="password_input" type="password">
+            <button class="logIN_button">Log in</button>
+            <div class="popup_footer">
+                <span class="popup_footer_text">Don’t have an account?</span>
+                <span class="toRegister">Register</span>
+            </div>
+        </div>
+        <div class="popup-register" id="login">
+            <img src="./Icons/close_btn.svg" alt="close_btn" class="close_btn">
+            <span class="popup_header">Register</span>
+            <span class="popup_text">First name</span>
+            <input class="name_input" type="text">
+            <span class="popup_text"> Last name </span>
+            <input class="surname_input" type="text">
+            <span class="popup_text">E-mail</span>
+            <input class="email_register" type="email">
+            <span class="popup_text"> Password </span>
+            <input class="password_register" type="password">
+            <button class="sign_button">Sign Up</button>
+            <div class="popup_footer">
+                <span class="popup_footer_text">Already have an account?</span>
+                <span class="toLogin">Login</span>
+            </div>
+        </div>
+        <div class="popup-my-profile">
+            <div class="aboutUser">
+                <div class="userIcon">
+                    <span class="user-Icon-name">VZ</span>
+                </div>
+                <div class="user">
+                    <span class="userName">Viktor</span>
+                    <span class="userSurname">Zaporozhets</span>
+                </div>
+            </div>
+            <div class="userInfo">
+                <img src="./Icons/close_btn.svg" alt="close_btn" class="close_btn2">
+                <span class="userProfile">My Profile</span>
+                <div class="visits">
+                    <div class="visitsInfo">
+                        <span class="visitsInfoHeader">visits</span>
+                        <img src="./Icons/Union.svg" alt="Union">
+                        <span class="visitsNumber">23</span>
+                    </div>
+                    <div class="bonusesInfo">
+                        <span class="visitsInfoHeader">bonuses</span>
+                        <img src="./Icons/Star 1.svg" alt="Star">
+                        <span class="visitsNumber">1243</span>
+                    </div>
+                    <div class="booksInfo">
+                        <span class="visitsInfoHeader">books</span>
+                        <img src="./Icons/book.svg" alt="Book">
+                        <span class="visitsNumber">1</span>
+                    </div>
+                </div>
+                <div class="rented">
+                    <span class="rentedText">Rented books</span>
+                    <ul class="buyBooks">
+                        <li>
+                            The Last Queen, Clive Irving
+                        </li>
+                        <li>
+                            Dominicana, Angie Cruz
+                        </li>
+                    </ul>
+                </div>
+                <div class="cardNumber">
+                    <span class="cardText">Card number</span>
+                    <span class="numberOfCard">F00234030</span> 
+                    <img src="./Icons/icon copy.svg" alt="Copy" style="cursor: pointer">
+                </div>
+            </div>
+        </div>
+        <div class="popup-buyACard">
+            <div class="buyHeaderContainer">
+                <span class="buyHeader">Buy a library card</span>
+                <img src="./Icons/close_btn_buy.svg" alt="close button" class="close_btn_buy">
+            </div>
+            <div class="aboutpay">
+                <div class="payInfo">
+                    <span class="payInfoText">Bank card number</span>
+                    <input class="bankCardNumber" type="number">
+                    <span class="payInfoText">Expiration code</span>
+                        <div class="expirationCode">
+                        <input class="expirationCode1" type="text">
+                        <input class="expirationCode2" type="text">
+                        </div>
+                    <span class="payInfoText">CVC</span>
+                    <input class="cvcNumber" type="number">
+                    <span class="payInfoText cardholder">Cardholder name</span>
+                    <input class="cardholderName" type="text">
+                    <span class="payInfoText">Postal code</span>
+                    <input class="postalCode" type="text">
+                    <span class="payInfoText">City / Town</span>
+                    <input class="userCity" type="text">
+                    <div class="buyButton">
+                        <button class="checkBuy">Buy</button>
+                        <span class="price">$ 25.00</span>
+                    </div>
+                </div>
+                <span class="payText">If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.
+                </span>
+            </div>
+        </div>
+    </div>
     </div>
     <script defer src="./index.js"></script>
 </body>

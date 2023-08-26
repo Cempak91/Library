@@ -19,18 +19,21 @@ if (navMenu) {
 
  //скрываем меню при клике
 document.addEventListener('click', (e) => {
-    const clickNav = e.composedPath().includes(navMenu || navSub);
-    const clickSub = e.composedPath().includes(unAuthProfile || unAuthSub);
-    if ( !clickNav ) {
+    const clickNav = e.composedPath().includes(navMenu);
+    const clickSub = e.composedPath().includes(navSub);
+    const clickUnAuthProfile = e.composedPath().includes(unAuthProfile);
+    const clickUnAuthSub = e.composedPath().includes(unAuthSub);
+    
+    if ( !clickNav && !clickSub ) {
         navMenu.classList.remove("_active");
         navSub.classList.remove("_active");
         document.body.classList.remove("lock");
         menuExit.classList.remove("open");
-    } else
-    if( !clickSub && unAuthProfile.classList.contains('activity')) {
-        unAuthProfile.classList.remove('activity');
-
     };
+    if ( !clickUnAuthProfile && !clickUnAuthSub) {
+        unAuthProfile.classList.remove('activity');
+    };
+    
   });
 
 for (let i=0; i<navLink.length; i++) {
@@ -186,8 +189,6 @@ radioButton.forEach(button => {
 
 
 //меню профиля без авторизации
-
-
 
 unAuthSub.addEventListener('click',() => {
     unAuthProfile.classList.toggle('activity');
