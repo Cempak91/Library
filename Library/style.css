@@ -1003,7 +1003,7 @@ margin-top: -40px;
       cursor: pointer;
     }
 
-    .logIn,
+    .logInLi,
     .myProfile {
       margin-bottom: 10px;
       cursor: pointer;
@@ -1015,12 +1015,19 @@ margin-top: -40px;
 
 .popup {
   display: flex;
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
+  top:0;
   background-color: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
+  visibility: hidden;
+  z-index: 11;
+}
+
+.popup.activity {
+  visibility: visible;
 }
 
 .popup-login {
@@ -1036,6 +1043,7 @@ margin-top: -40px;
   opacity: 0;
   visibility: hidden;
   transition: all 1s ease;
+  z-index: 10;
 }
 
 .popup-login.activity {
@@ -1154,6 +1162,7 @@ line-height: normal;
   opacity: 0;
   visibility: hidden;
   transition: all 1s ease;
+  z-index: 10;
 }
 
 .popup-register.activity{
@@ -1241,6 +1250,7 @@ line-height: normal;
   opacity: 0;
   visibility: hidden;
   transition: all 1s ease;
+  z-index: 10;
 }
 
 .popup-my-profile.activity{
@@ -1444,6 +1454,7 @@ line-height: normal;
   opacity: 1;
   visibility: visible;
   transition: all 1s ease;
+  z-index: 10;
 }
 
 .aboutpay{

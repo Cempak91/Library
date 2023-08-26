@@ -46,8 +46,8 @@
             <div class="profileForm notAuth">
                 <ul class="profileList">
                     <li class="profile"> Profile </li>
-                    <li class="logIn" >Log In </li>
-                    <li class="registered"> Register </li>
+                    <li id="logInLi" class="logInLi" >Log In </li>
+                    <li id="registered" class="registered"> Register </li>
                 </ul>
             </div>
             <div class="profileForm Auth">
@@ -625,8 +625,8 @@
             <a class="my-name" href="https://github.com/Cempak91"> Viktor </a>
         </div>                    
     </footer>
-    <div class="popup">
-        <div class="popup-login" id="login">
+    <div id="popup" class="popup">
+        <div id="popup-login" class="popup-login">
             <img src="./Icons/close_btn.svg" alt="close_btn" class="close_btn">
             <span class="popup_header">Login</span>
             <span class="popup_text">E-mail or readers card</span>
@@ -639,7 +639,7 @@
                 <span class="toRegister">Register</span>
             </div>
         </div>
-        <div class="popup-register" id="login">
+        <div id="popup-register" class="popup-register">
             <img src="./Icons/close_btn.svg" alt="close_btn" class="close_btn">
             <span class="popup_header">Register</span>
             <span class="popup_text">First name</span>

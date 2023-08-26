@@ -23,7 +23,10 @@ document.addEventListener('click', (e) => {
     const clickSub = e.composedPath().includes(navSub);
     const clickUnAuthProfile = e.composedPath().includes(unAuthProfile);
     const clickUnAuthSub = e.composedPath().includes(unAuthSub);
-    
+    const clickunLogin = e.composedPath().includes(modulLogin);
+    const clickunRegiter = e.composedPath().includes(modulRegister);
+    const clickunLogin2 = e.composedPath().includes(toLogin);
+    console.log ( modulLogin.classList.contains("activity"));
     if ( !clickNav && !clickSub ) {
         navMenu.classList.remove("_active");
         navSub.classList.remove("_active");
@@ -33,7 +36,19 @@ document.addEventListener('click', (e) => {
     if ( !clickUnAuthProfile && !clickUnAuthSub) {
         unAuthProfile.classList.remove('activity');
     };
-    
+    if (!clickunLogin && !clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub && !clickunRegiter &&!clickunLogin2) {
+        popup.classList.remove ("activity");
+    };
+    if (!clickunLogin && !clickUnAuthProfile && !clickUnAuthSub &&!clickunRegiter &&!clickunLogin2) {
+        if (modulLogin.classList.contains("activity")){
+        modulLogin.classList.remove("activity");
+        };
+    };
+    if (!clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub &&!clickunLogin) {
+        if (modulRegister.classList.contains("activity")){
+        modulRegister.classList.remove("activity");
+        };
+    };
   });
 
 for (let i=0; i<navLink.length; i++) {
@@ -192,4 +207,52 @@ radioButton.forEach(button => {
 
 unAuthSub.addEventListener('click',() => {
     unAuthProfile.classList.toggle('activity');
+});
+
+//модульные окна
+
+const toLogin = document.querySelector('.myProfile');
+const toRegister = document.getElementById('registered');
+const modulLogin = document.getElementById('popup-login');
+const modulRegister = document.getElementById('popup-register');
+const popup = document.getElementById('popup');
+const aLogin = document.querySelector(".toLogin");
+const aRegister = document.querySelector(".toRegister");
+
+toLogin.addEventListener('click', () => {
+    popup.classList.add ("activity");
+    modulLogin.classList.add ("activity");
+
+    if (toRegister.classList.contains ("activity")) {
+        modulRegister.classList.remove ("activity");
+    };
+});
+
+toRegister.addEventListener('click', () => {
+    popup.classList.add ("activity");
+    modulRegister.classList.add ("activity");
+
+    if (toLogin.classList.contains ("activity")) {
+        modulLogin.classList.remove ("activity");
+    }
+});
+
+aLogin.addEventListener('click', () => {
+    modulRegister.classList.remove ("activity");
+    modulLogin.classList.add ("activity");
+});
+
+aRegister.addEventListener('click', () => {
+    modulRegister.classList.add ("activity");
+    modulLogin.classList.remove ("activity");
+});
+
+const closeModal= document.querySelectorAll('.close_btn');
+
+closeModal.forEach ((element) => {
+    element.addEventListener('click', () => {
+        modulRegister.classList.remove ("activity");
+        modulLogin.classList.remove ("activity");
+        popup.classList.remove ("activity");
+    });
 });
