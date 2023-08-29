@@ -26,7 +26,11 @@ document.addEventListener('click', (e) => {
     const clickunLogin = e.composedPath().includes(modulLogin);
     const clickunRegiter = e.composedPath().includes(modulRegister);
     const clickunLogin2 = e.composedPath().includes(toLogin);
-    console.log ( modulLogin.classList.contains("activity"));
+    const clickunsignButton = e.composedPath().includes(signButton);
+    const clickloginButton = e.composedPath().includes(loginButton);
+    const clickbuyButton = Array.prototype.slice.call(buyButton);
+    const clickpopupBuyACard = e.composedPath().includes(popupBuyACard);
+
     if ( !clickNav && !clickSub ) {
         navMenu.classList.remove("_active");
         navSub.classList.remove("_active");
@@ -36,17 +40,24 @@ document.addEventListener('click', (e) => {
     if ( !clickUnAuthProfile && !clickUnAuthSub) {
         unAuthProfile.classList.remove('activity');
     };
-    if (!clickunLogin && !clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub && !clickunRegiter &&!clickunLogin2) {
+    if (!clickunLogin && !clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub && !clickunRegiter &&!clickunLogin2 &&!clickunsignButton &&!clickloginButton) {
         popup.classList.remove ("activity");
     };
-    if (!clickunLogin && !clickUnAuthProfile && !clickUnAuthSub &&!clickunRegiter &&!clickunLogin2) {
+    if (!clickunLogin && !clickUnAuthProfile && !clickUnAuthSub &&!clickunRegiter &&!clickunLogin2 &&!clickloginButton) {
         if (modulLogin.classList.contains("activity")){
         modulLogin.classList.remove("activity");
         };
     };
-    if (!clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub &&!clickunLogin) {
+    if (!clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub &&!clickunLogin && !clickunsignButton) {
         if (modulRegister.classList.contains("activity")){
         modulRegister.classList.remove("activity");
+        };
+    };
+
+    if (popupBuyACard.classList.contains("activity") && !clickpopupBuyACard) {
+        if (!clickbuyButton.some(buy => e.composedPath().includes(buy))) {
+            popupBuyACard.classList.remove ("activity");
+            popup.classList.remove ("activity");
         };
     };
   });
@@ -211,13 +222,15 @@ unAuthSub.addEventListener('click',() => {
 
 //модульные окна
 
-const toLogin = document.querySelector('.myProfile');
+const toLogin = document.querySelector('.logInLi');
 const toRegister = document.getElementById('registered');
 const modulLogin = document.getElementById('popup-login');
 const modulRegister = document.getElementById('popup-register');
 const popup = document.getElementById('popup');
 const aLogin = document.querySelector(".toLogin");
 const aRegister = document.querySelector(".toRegister");
+const signButton =document.querySelector(".sign.up");
+const loginButton = document.querySelector (".sign.login");
 
 toLogin.addEventListener('click', () => {
     popup.classList.add ("activity");
@@ -226,6 +239,24 @@ toLogin.addEventListener('click', () => {
     if (toRegister.classList.contains ("activity")) {
         modulRegister.classList.remove ("activity");
     };
+});
+
+loginButton.addEventListener('click', () => {
+    popup.classList.add ("activity");
+    modulLogin.classList.add ("activity");
+    if (toRegister.classList.contains ("activity")) {
+        modulRegister.classList.remove ("activity");
+    };
+});
+
+signButton.addEventListener('click', () => {
+    popup.classList.add ("activity");
+    modulRegister.classList.add ("activity");
+    console.log(signButton);
+    if (toLogin.classList.contains ("activity")) {
+        modulLogin.classList.remove ("activity");
+    }
+
 });
 
 toRegister.addEventListener('click', () => {
@@ -256,3 +287,35 @@ closeModal.forEach ((element) => {
         popup.classList.remove ("activity");
     });
 });
+
+//меняем кнопки Buy на Own при нажатии и вызываем модульное окно для введения данных карты
+const buyButton = document.querySelectorAll('.buy');
+const popupBuyACard = document.querySelector('.popup-buyACard');
+const closeBuyACard = document.querySelector('.close_btn_buy');
+const buyBookButton = document.querySelector('.checkBuy');
+
+closeBuyACard.addEventListener('click', () => {
+    popupBuyACard.classList.remove ("activity");
+    popup.classList.remove ("activity");
+});
+
+
+buyButton.forEach ((element, index) => {
+    element.addEventListener('click', () =>{
+    popupBuyACard.classList.add ("activity");
+    popup.classList.add ("activity");
+    closeBuyACard.addEventListener('click', () => {
+        popupBuyACard.classList.remove ("activity");
+        popup.classList.remove ("activity");
+    });
+    buyBookButton.addEventListener ('click', () => {
+    popupBuyACard.classList.remove ("activity");
+    popup.classList.remove ("activity");
+    element.disabled = true;
+    element.value = "Own";
+    element.classList.add('own');
+    });
+
+});
+});
+

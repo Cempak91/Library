@@ -216,4 +216,8 @@
         column-gap: 0px;
         justify-items: center;
     }
+
+    .profileForm {
+        right: 105px;
+    }
 }

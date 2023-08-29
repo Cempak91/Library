@@ -375,10 +375,20 @@ input:checked + label {
     cursor: pointer;
   }
 
+  .buy.own {
+    border: 1px solid #BB945F;
+    color:#BB945F;
+    cursor:default;
+  }
+
   .buy:hover {
     border: 1px solid #BB945F;
     background-color: #BB945F;
     transition: all 2s;
+  }
+
+  .buy.own:hover {
+    background-color: #FFFFFF;
   }
 
   .books-image {
@@ -398,20 +408,6 @@ input:checked + label {
     width: 100%;
     margin: -10px 20px 0 20px;
   }
-
-  .own {
-    display: flex;
-    width: 75px;
-    height: 30px;
-    position: absolute;
-    transform: translate(20px,511px);
-    border: 1px solid #BB945F;
-    justify-content: center;
-    align-items: center;
-    background-color:#FFFFFF;
-    color:#BB945F
-  }
-
 
   .coffee-shop-info {
     font-family: Inter;
@@ -958,11 +954,13 @@ margin-top: -40px;
       z-index: 11;
       transition: all 1s ease;
       opacity: 0;
+      visibility: hidden;
       transform: rotateX(3000deg);
     }
     
     .profileForm.activity {
       opacity: 1;
+      visibility: visible;
       transform: rotateX(0deg)
     }
 
