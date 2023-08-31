@@ -319,3 +319,76 @@ buyButton.forEach ((element, index) => {
 });
 });
 
+//Регистрация пользователя. Внесение данных в Local storadge.
+const logIN_button = document.querySelector('.logIN_button');
+const signUP_button = document.querySelector('.sign_button');
+const firstName_input = document.querySelector('.name_input');
+const lastName_input = document.querySelector('.surname_input');
+const email_register = document.querySelector('.email_register');
+const password_register = document.querySelector('.password_register');
+const userName = document.querySelector(".userName");
+const userSurname = document.querySelector(".userSurname");
+const user_Icon_name = document.querySelector(".user-Icon-name");
+const visitsNumber = document.querySelector(".visitsNumber");
+const booksNumber = document.querySelector(".visitsNumber.books");
+const cardNumber = document.querySelector(".numberOfCard");
+
+function validateEmail(email) {
+    // Регулярное выражение для проверки формата почтового адреса 
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  };
+
+  function addUser(username, password, firstName, lastName, visitsNumber, booksNumber, cardNumber ) {
+    // Получение существующих пользователей из локального хранилища или создание пустого массива, если таковых не 
+    var users = JSON.parse(localStorage.getItem('users')) || [];
+     // Добавляем нового пользователя в массив
+     users.push({ username: username, password: password, firstName:firstName, lastName: lastName, visitsNumber: visitsNumber, booksNumber:booksNumber, cardNumber: cardNumber  });
+
+  // Сохраняем обновленный массив обратно в локальное хранилище 
+  localStorage.setItem('users', JSON.stringify(users));
+}
+
+// Генерация рандомной буквы
+function generateLetter() {
+  var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  return letters.charAt(Math.floor(Math.random() * letters.length));
+};
+
+// Генерация 8 случайных чисел
+function generateNumbers() {
+  var numbers = '';
+  for (var i = 0; i < 8; i++) {
+    numbers += Math.floor(Math.random() * 10);
+  };
+  return numbers;
+};
+
+signUP_button.addEventListener('click', () => {
+    var login = email_register.value;
+    var password = password_register.value;
+    var firstName = firstName_input.value;
+    var lastName = lastName_input.value;
+    var visitsNumber = 0;
+    var booksNumber =0;
+
+    if (login === null) {
+        alert ('E-mail is empty');
+    } else if (!validateEmail(login)) {
+        alert ('E-mail is incorrect')
+    } else if (password.length<8) {
+        alert ('The password must be at least 8 characters long')
+    } else {
+        // Сгенерировать 1 случайную букву и 8 случайных чисел
+        var randomLetter = generateLetter();
+        var randomNumbers = generateNumbers();
+        var cardNumber = randomLetter + randomNumbers;
+        visitsNumber++;
+        addUser(login, password, firstName, lastName, visitsNumber, booksNumber, cardNumber);
+        modulRegister.classList.remove ("activity");
+        popup.classList.remove ("activity");
+        alert('Registration was successful');
+    };
+});
+
+
