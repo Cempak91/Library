@@ -6,6 +6,7 @@ const navLink = document.querySelectorAll(".navlink");
 const menuExit = document.querySelector(".burgerExit");
 const unAuthSub = document.querySelector('.Subtract.notAuth');
 const unAuthProfile = document.querySelector('.profileForm.notAuth');
+const authProfile = document.querySelector('.profileForm.Auth');
 
 if (navMenu) {
     navMenu.addEventListener("click", function (e) {
@@ -30,6 +31,7 @@ document.addEventListener('click', (e) => {
     const clickloginButton = e.composedPath().includes(loginButton);
     const clickbuyButton = Array.prototype.slice.call(buyButton);
     const clickpopupBuyACard = e.composedPath().includes(popupBuyACard);
+    const clickpopup = e.composedPath().includes(popup);
 
     if ( !clickNav && !clickSub ) {
         navMenu.classList.remove("_active");
@@ -40,24 +42,26 @@ document.addEventListener('click', (e) => {
     if ( !clickUnAuthProfile && !clickUnAuthSub) {
         unAuthProfile.classList.remove('activity');
     };
-    if (!clickunLogin && !clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub && !clickunRegiter &&!clickunLogin2 &&!clickunsignButton &&!clickloginButton) {
-        popup.classList.remove ("activity");
+    if (!clickunLogin && !clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub && !clickunRegiter &&!clickunLogin2 &&!clickunsignButton &&!clickloginButton && clickpopup) {
+       popup.classList.remove ("activity");
     };
-    if (!clickunLogin && !clickUnAuthProfile && !clickUnAuthSub &&!clickunRegiter &&!clickunLogin2 &&!clickloginButton) {
+    if (!clickunLogin && !clickUnAuthProfile && !clickUnAuthSub &&!clickunRegiter &&!clickunLogin2 &&!clickloginButton && clickpopup) {
         if (modulLogin.classList.contains("activity")){
-        modulLogin.classList.remove("activity");
+            modulLogin.classList.remove("activity");
+            popup.classList.remove ("activity");
         };
     };
     if (!clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub &&!clickunLogin && !clickunsignButton) {
         if (modulRegister.classList.contains("activity")){
-        modulRegister.classList.remove("activity");
+            modulRegister.classList.remove("activity");
+            popup.classList.remove ("activity");
         };
     };
 
     if (popupBuyACard.classList.contains("activity") && !clickpopupBuyACard) {
         if (!clickbuyButton.some(buy => e.composedPath().includes(buy))) {
             popupBuyACard.classList.remove ("activity");
-            popup.classList.remove ("activity");
+           popup.classList.remove ("activity");
         };
     };
   });
@@ -252,7 +256,6 @@ loginButton.addEventListener('click', () => {
 signButton.addEventListener('click', () => {
     popup.classList.add ("activity");
     modulRegister.classList.add ("activity");
-    console.log(signButton);
     if (toLogin.classList.contains ("activity")) {
         modulLogin.classList.remove ("activity");
     }
@@ -302,22 +305,54 @@ closeBuyACard.addEventListener('click', () => {
 
 buyButton.forEach ((element, index) => {
     element.addEventListener('click', () =>{
-    popupBuyACard.classList.add ("activity");
-    popup.classList.add ("activity");
-    closeBuyACard.addEventListener('click', () => {
-        popupBuyACard.classList.remove ("activity");
-        popup.classList.remove ("activity");
-    });
-    buyBookButton.addEventListener ('click', () => {
-    popupBuyACard.classList.remove ("activity");
-    popup.classList.remove ("activity");
-    element.disabled = true;
-    element.value = "Own";
-    element.classList.add('own');
-    });
+        if (authProfile.classList.contains("activity")){
+            popupBuyACard.classList.add ("activity");
+            popup.classList.add ("activity");
+            closeBuyACard.addEventListener('click', () => {
+                popupBuyACard.classList.remove ("activity");
+                popup.classList.remove ("activity");
+            });
+            buyBookButton.addEventListener ('click', () => {
+            popupBuyACard.classList.remove ("activity");
+            popup.classList.remove ("activity");
+            element.disabled = true;
+            element.value = "Own";
+            element.classList.add('own');
+        });
+    } else {
+       popup.classList.add ("activity");
+       modulLogin.classList.add ("activity");
+    };
+});
+});
 
-});
-});
+//Для того, чтобы кнопка Buy была активна, все поля должны быть не пустыми
+const bankCardNumber = document.querySelector('.bankCardNumber');
+const expirationCode1 = document.querySelector('.expirationCode1');
+const expirationCode2 = document.querySelector('.expirationCode2');
+const cvcNumber = document.querySelector('.cvcNumber');
+const cardholderName = document.querySelector('.cardholderName');
+const postalCode = document.querySelector('.postalCode');
+const userCity = document.querySelector('.userCity');
+
+function chekInputForBuy(){
+if (bankCardNumber.value !=="" && expirationCode1.value !=="" && expirationCode2.value !=="" && cvcNumber.value !=="" && cardholderName.value !=="" && postalCode.value !=="" && userCity.value !=="") {
+    buyBookButton.disabled = false;
+    buyBookButton.style.cursor = "pointer";
+} else {
+    buyBookButton.disabled = true;
+    buyBookButton.style.cursor = "not-allowed";
+};
+};
+
+bankCardNumber.addEventListener('input',chekInputForBuy);
+expirationCode1.addEventListener('input',chekInputForBuy);
+expirationCode2.addEventListener('input',chekInputForBuy);
+cvcNumber.addEventListener('input',chekInputForBuy);
+cardholderName.addEventListener('input',chekInputForBuy);
+postalCode.addEventListener('input',chekInputForBuy);
+userCity.addEventListener('input',chekInputForBuy);
+
 
 //Регистрация пользователя. Внесение данных в Local storadge.
 const logIN_button = document.querySelector('.logIN_button');
@@ -340,7 +375,7 @@ function validateEmail(email) {
   };
 
   function addUser(username, password, firstName, lastName, visitsNumber, booksNumber, cardNumber ) {
-    // Получение существующих пользователей из локального хранилища или создание пустого массива, если таковых не 
+    // Получение существующих пользователей из локального хранилища или создание пустого массива, если таковых нет 
     var users = JSON.parse(localStorage.getItem('users')) || [];
      // Добавляем нового пользователя в массив
      users.push({ username: username, password: password, firstName:firstName, lastName: lastName, visitsNumber: visitsNumber, booksNumber:booksNumber, cardNumber: cardNumber  });
@@ -392,3 +427,24 @@ signUP_button.addEventListener('click', () => {
 });
 
 
+logIN_button.addEventListener('click', () => {
+    const userInfo = JSON.parse(localStorage.getItem('users'));
+    const email_input = document.querySelector('.email_input').value;
+    const password_input = document.querySelector('.password_input').value;
+
+
+    for (let user of userInfo) {
+        const username_LocalStorage = user.username;
+        const password_LocalStorage = user.password; 
+        const cardNumber_LocalStorage = user.cardNumber; 
+       
+        if (username_LocalStorage === email_input || email_input === cardNumber_LocalStorage && password_input === password_LocalStorage ){
+            alert ('login is good');
+            return; //выйти после успешного логина, а не выдавать 100500 ошибок идентификации пользователя
+        } authError = true;
+    };
+
+    if (authError = true) {
+        alert ('bad man');
+    };
+})

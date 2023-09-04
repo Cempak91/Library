@@ -138,6 +138,31 @@ display: flex;
   cursor: pointer;
 }
 
+.Subtract.Auth {
+  width: 28px;
+  height: 28px;
+  background-color: white;
+  border-radius: 50%;
+  display: none;
+  transform: translateY(-2px);
+}
+
+.Subtract.Auth.activity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Subtract.notAuth.hid {
+  display: none;
+}
+
+.user-Icon-name-sub {
+  font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+}
+
 .nav-sub {
     display: flex;
     align-items:center;  
@@ -1565,7 +1590,12 @@ line-height: normal;
   .checkBuy:hover {
     background-color: #BB945F;
     transition: all 2s;
-    cursor: pointer;
+  }
+
+  .checkBuy:disabled:hover {
+    background-color:#FFFFFF;
+    transition: all 2s;
+    cursor:not-allowed;
   }
 
   .price {
@@ -1595,4 +1625,10 @@ line-height: normal;
 
 .payInfoText.cardholder{
   margin-top: 20px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
