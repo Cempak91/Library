@@ -153,10 +153,6 @@ display: flex;
   align-items: center;
 }
 
-.Subtract.notAuth.hid {
-  display: none;
-}
-
 .user-Icon-name-sub {
   font-family: Inter;
     font-size: 20px;
@@ -1009,7 +1005,8 @@ margin-top: -40px;
       margin-top: -10px;
     }
 
-    .profile::after {
+    .profile::after,
+      .profileCard::after {
       content: "";
       position: relative;
       width: 40px;
@@ -1018,6 +1015,15 @@ margin-top: -40px;
       display: block;
       left: 25%;
       top: 5px;
+    }
+
+    .profileCard {
+      color: #BB945F;
+      text-shadow: #000000;
+      font-weight: 700;
+      margin-bottom: 20px;
+      margin-top: -10px;
+      font-size: 12px;
     }
     
     .myProfile,

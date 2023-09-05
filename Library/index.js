@@ -7,6 +7,10 @@ const menuExit = document.querySelector(".burgerExit");
 const unAuthSub = document.querySelector('.Subtract.notAuth');
 const unAuthProfile = document.querySelector('.profileForm.notAuth');
 const authProfile = document.querySelector('.profileForm.Auth');
+const authsub =  document.querySelector('.Subtract.Auth');
+const myProfile = document.querySelector('.myProfile');
+const userInfo_popup = document.querySelector('.popup-my-profile');
+const copyButton = document.querySelector('.copyButton');
 
 if (navMenu) {
     navMenu.addEventListener("click", function (e) {
@@ -32,6 +36,10 @@ document.addEventListener('click', (e) => {
     const clickbuyButton = Array.prototype.slice.call(buyButton);
     const clickpopupBuyACard = e.composedPath().includes(popupBuyACard);
     const clickpopup = e.composedPath().includes(popup);
+    const clickAuthProfile = e.composedPath().includes(authProfile);
+    const clickauthsub = e.composedPath().includes(authsub);
+    const clickuserInfo_popup = e.composedPath().includes(userInfo_popup);
+    const clickmyProfile = e.composedPath().includes(myProfile);
 
     if ( !clickNav && !clickSub ) {
         navMenu.classList.remove("_active");
@@ -42,7 +50,7 @@ document.addEventListener('click', (e) => {
     if ( !clickUnAuthProfile && !clickUnAuthSub) {
         unAuthProfile.classList.remove('activity');
     };
-    if (!clickunLogin && !clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub && !clickunRegiter &&!clickunLogin2 &&!clickunsignButton &&!clickloginButton && clickpopup) {
+    if (!clickunLogin && !clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub && !clickunRegiter &&!clickunLogin2 &&!clickunsignButton &&!clickloginButton && clickpopup &&!clickAuthProfile &&!userInfo_popup &&!clickmyProfile) {
        popup.classList.remove ("activity");
     };
     if (!clickunLogin && !clickUnAuthProfile && !clickUnAuthSub &&!clickunRegiter &&!clickunLogin2 &&!clickloginButton && clickpopup) {
@@ -61,8 +69,17 @@ document.addEventListener('click', (e) => {
     if (popupBuyACard.classList.contains("activity") && !clickpopupBuyACard) {
         if (!clickbuyButton.some(buy => e.composedPath().includes(buy))) {
             popupBuyACard.classList.remove ("activity");
-           popup.classList.remove ("activity");
+            popup.classList.remove ("activity");
         };
+    };
+
+    if (authProfile.classList.contains("activity") && !clickAuthProfile &&!clickauthsub){
+        authProfile.classList.remove('activity');
+    };
+
+    if (userInfo_popup.classList.contains("activity") &&!clickuserInfo_popup &&clickpopup){
+    userInfo_popup.classList.remove("activity");
+    popup.classList.remove('activity');
     };
   });
 
@@ -305,7 +322,7 @@ closeBuyACard.addEventListener('click', () => {
 
 buyButton.forEach ((element, index) => {
     element.addEventListener('click', () =>{
-        if (authProfile.classList.contains("activity")){
+        if (authsub.classList.contains("activity")){
             popupBuyACard.classList.add ("activity");
             popup.classList.add ("activity");
             closeBuyACard.addEventListener('click', () => {
@@ -361,12 +378,12 @@ const firstName_input = document.querySelector('.name_input');
 const lastName_input = document.querySelector('.surname_input');
 const email_register = document.querySelector('.email_register');
 const password_register = document.querySelector('.password_register');
-const userName = document.querySelector(".userName");
-const userSurname = document.querySelector(".userSurname");
-const user_Icon_name = document.querySelector(".user-Icon-name");
-const visitsNumber = document.querySelector(".visitsNumber");
-const booksNumber = document.querySelector(".visitsNumber.books");
-const cardNumber = document.querySelector(".numberOfCard");
+var userName_popup = document.querySelector(".userName");
+var userSurnam_popup = document.querySelector(".userSurname");
+var user_Icon_name_popup = document.querySelector(".user-Icon-name");
+var visitsNumber_popup = document.querySelector(".visitsNumber");
+var booksNumber_popup = document.querySelector(".visitsNumber.books");
+var cardNumber_popup = document.querySelector(".numberOfCard");
 
 function validateEmail(email) {
     // Регулярное выражение для проверки формата почтового адреса 
@@ -437,14 +454,52 @@ logIN_button.addEventListener('click', () => {
         const username_LocalStorage = user.username;
         const password_LocalStorage = user.password; 
         const cardNumber_LocalStorage = user.cardNumber; 
-       
+        const iconSpan = document.querySelector('.user-Icon-name-sub')
+        const cardProfile = document.querySelector('.profileCard');
+        var visitsNumber = parseInt(user.visitsNumber);
+
+
         if (username_LocalStorage === email_input || email_input === cardNumber_LocalStorage && password_input === password_LocalStorage ){
-            alert ('login is good');
+            unAuthSub.style.display = "none";
+            authsub.classList.add("activity");
+            iconSpan.innerHTML = user.firstName.charAt(0).toUpperCase() + user.lastName.charAt(0).toUpperCase();
+            visitsNumber +=1;
+            user.visitsNumber = visitsNumber;
+            localStorage.setItem('users', JSON.stringify(userInfo));
+            cardProfile.innerHTML = cardNumber_LocalStorage;
+            modulLogin.classList.remove ("activity");
+            popup.classList.remove ("activity");
+            visitsNumber_popup.innerHTML = visitsNumber;
+            booksNumber_popup.innerHTML = user.booksNumber;
+            cardNumber_popup.innerHTML = user.cardNumber;
+            userName_popup.innerHTML = user.firstName;
+            userSurnam_popup.innerHTML = user.lastName;
+            user_Icon_name_popup.innerHTML = user.firstName.charAt(0).toUpperCase() + user.lastName.charAt(0).toUpperCase();
+
             return; //выйти после успешного логина, а не выдавать 100500 ошибок идентификации пользователя
         } authError = true;
     };
+    modulLogin.classList.remove ("activity");
+    popup.classList.remove ("activity");
 
     if (authError = true) {
-        alert ('bad man');
+        alert ('login or password is wrong');
     };
+});
+
+authsub.addEventListener('click', ()=> {
+    authProfile.classList.add("activity");
+});
+
+myProfile.addEventListener('click', () => {
+    userInfo_popup.classList.add('activity');
+    popup.classList.add('activity');
 })
+
+copyButton.addEventListener('click', copyToCache);
+
+function copyToCache() {
+    const data = cardNumber_popup.innerText;
+    console.log(data);
+    navigator.clipboard.writeText(data);
+};
