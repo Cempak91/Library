@@ -574,9 +574,26 @@
                     <form class="LibraryCard-form">
                         <p class="form-name"> Brooklyn Public Library </p>
                         <input class="reader-name" type="text" id="name" placeholder="Reader's name">
-                        <input class="reader-name" type="number" id="card-number" placeholder="Card number">
+                        <input class="reader-name" type="text" id="card-number" placeholder="Card number">
                     </form>
                     <button class="librarycard-button"> Check the card </button>
+                    <div class="visits_in_libraryCard">
+                        <div class="visitsInfo">
+                            <span class="visitsInfoLibrary">visits</span>
+                            <img src="./Icons/Union.svg" alt="Union">
+                            <span class="visitsNumber">23</span>
+                        </div>
+                        <div class="bonusesInfo">
+                            <span class="visitsInfoLibrary">bonuses</span>
+                            <img src="./Icons/Star 1.svg" alt="Star">
+                            <span class="visitsNumber">1243</span>
+                        </div>
+                        <div class="booksInfo">
+                            <span class="visitsInfoLibrary">books</span>
+                            <img src="./Icons/book.svg" alt="Book">
+                            <span class="visitsNumber books">1</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="about-autorisation">
@@ -715,18 +732,18 @@
             <div class="aboutpay">
                 <div class="payInfo">
                     <span class="payInfoText">Bank card number</span>
-                    <input class="bankCardNumber" type="number">
+                    <input class="bankCardNumber" type="number" pattern="[0-9]{16}">
                     <span class="payInfoText">Expiration code</span>
                         <div class="expirationCode">
-                        <input class="expirationCode1" type="text">
-                        <input class="expirationCode2" type="text">
+                        <input class="expirationCode1" type="number">
+                        <input class="expirationCode2" type="number">
                         </div>
                     <span class="payInfoText">CVC</span>
-                    <input class="cvcNumber" type="number">
+                    <input class="cvcNumber" type="number" pattern="[1-9]{,3}">
                     <span class="payInfoText cardholder">Cardholder name</span>
                     <input class="cardholderName" type="text">
                     <span class="payInfoText">Postal code</span>
-                    <input class="postalCode" type="text">
+                    <input class="postalCode" type="number" pattern="[1-9]{,6}">
                     <span class="payInfoText">City / Town</span>
                     <input class="userCity" type="text">
                     <div class="buyButton">

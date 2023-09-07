@@ -11,6 +11,8 @@ const authsub =  document.querySelector('.Subtract.Auth');
 const myProfile = document.querySelector('.myProfile');
 const userInfo_popup = document.querySelector('.popup-my-profile');
 const copyButton = document.querySelector('.copyButton');
+const close_btn_userInfo = document.querySelector('.close_btn2');
+const logOut = document.querySelector('.logOut');
 
 if (navMenu) {
     navMenu.addEventListener("click", function (e) {
@@ -41,6 +43,7 @@ document.addEventListener('click', (e) => {
     const clickuserInfo_popup = e.composedPath().includes(userInfo_popup);
     const clickmyProfile = e.composedPath().includes(myProfile);
 
+
     if ( !clickNav && !clickSub ) {
         navMenu.classList.remove("_active");
         navSub.classList.remove("_active");
@@ -50,7 +53,7 @@ document.addEventListener('click', (e) => {
     if ( !clickUnAuthProfile && !clickUnAuthSub) {
         unAuthProfile.classList.remove('activity');
     };
-    if (!clickunLogin && !clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub && !clickunRegiter &&!clickunLogin2 &&!clickunsignButton &&!clickloginButton && clickpopup &&!clickAuthProfile &&!userInfo_popup &&!clickmyProfile) {
+    if (!clickunLogin && !clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub && !clickunRegiter &&!clickunLogin2 &&!clickunsignButton &&!clickloginButton && clickpopup &&!clickAuthProfile &&!userInfo_popup &&!clickmyProfile && !clickpopupBuyACard) {
        popup.classList.remove ("activity");
     };
     if (!clickunLogin && !clickUnAuthProfile && !clickUnAuthSub &&!clickunRegiter &&!clickunLogin2 &&!clickloginButton && clickpopup) {
@@ -320,25 +323,36 @@ closeBuyACard.addEventListener('click', () => {
 });
 
 
-buyButton.forEach ((element, index) => {
+buyButton.forEach ((element) => {
     element.addEventListener('click', () =>{
         if (authsub.classList.contains("activity")){
-            popupBuyACard.classList.add ("activity");
-            popup.classList.add ("activity");
             closeBuyACard.addEventListener('click', () => {
                 popupBuyACard.classList.remove ("activity");
                 popup.classList.remove ("activity");
             });
-            buyBookButton.addEventListener ('click', () => {
-            popupBuyACard.classList.remove ("activity");
-            popup.classList.remove ("activity");
-            element.disabled = true;
-            element.value = "Own";
-            element.classList.add('own');
-        });
-    } else {
-       popup.classList.add ("activity");
-       modulLogin.classList.add ("activity");
+            const userInfo = JSON.parse(localStorage.getItem('users'));
+            
+            for (let user of userInfo) {
+                if (user.firstName === userName_popup.textContent && user.libraryCard === false) {
+                    popupBuyACard.classList.add ("activity");
+                    popup.classList.add ("activity");
+                buyBookButton.addEventListener ('click', () => {
+                    popupBuyACard.classList.remove ("activity");
+                    popup.classList.remove ("activity");
+                    user.libraryCard = true;
+                    localStorage.setItem('users', JSON.stringify(userInfo));
+            });
+            } else if (user.firstName === userName_popup.textContent && user.libraryCard === true) {
+                user.booksNumber +=1;
+                localStorage.setItem('users', JSON.stringify(userInfo));
+                element.disabled = true;
+                element.value = "Own";
+                element.classList.add('own');
+            };
+        };
+    } else  {
+        popup.classList.add ("activity");
+        modulLogin.classList.add ("activity");
     };
 });
 });
@@ -395,7 +409,7 @@ function validateEmail(email) {
     // Получение существующих пользователей из локального хранилища или создание пустого массива, если таковых нет 
     var users = JSON.parse(localStorage.getItem('users')) || [];
      // Добавляем нового пользователя в массив
-     users.push({ username: username, password: password, firstName:firstName, lastName: lastName, visitsNumber: visitsNumber, booksNumber:booksNumber, cardNumber: cardNumber  });
+     users.push({ username: username, password: password, firstName:firstName, lastName: lastName, visitsNumber: visitsNumber, booksNumber:booksNumber, cardNumber: cardNumber, libraryCard: false  });
 
   // Сохраняем обновленный массив обратно в локальное хранилище 
   localStorage.setItem('users', JSON.stringify(users));
@@ -459,7 +473,7 @@ logIN_button.addEventListener('click', () => {
         var visitsNumber = parseInt(user.visitsNumber);
 
 
-        if (username_LocalStorage === email_input || email_input === cardNumber_LocalStorage && password_input === password_LocalStorage ){
+        if (username_LocalStorage === email_input && password_input === password_LocalStorage || email_input === cardNumber_LocalStorage && password_input === password_LocalStorage ){
             unAuthSub.style.display = "none";
             authsub.classList.add("activity");
             iconSpan.innerHTML = user.firstName.charAt(0).toUpperCase() + user.lastName.charAt(0).toUpperCase();
@@ -475,6 +489,11 @@ logIN_button.addEventListener('click', () => {
             userName_popup.innerHTML = user.firstName;
             userSurnam_popup.innerHTML = user.lastName;
             user_Icon_name_popup.innerHTML = user.firstName.charAt(0).toUpperCase() + user.lastName.charAt(0).toUpperCase();
+            console.log(cardNumber_LocalStorage);
+            document.getElementById("name").value = user.firstName + ' ' + user.lastName;
+            document.getElementById("card-number").value = cardNumber_LocalStorage;
+            document.getElementById("name").setAttribute("disabled", "");
+            document.getElementById("card-number").setAttribute("disabled", "");
 
             return; //выйти после успешного логина, а не выдавать 100500 ошибок идентификации пользователя
         } authError = true;
@@ -500,6 +519,29 @@ copyButton.addEventListener('click', copyToCache);
 
 function copyToCache() {
     const data = cardNumber_popup.innerText;
-    console.log(data);
     navigator.clipboard.writeText(data);
+};
+
+close_btn_userInfo.addEventListener('click', () => {
+        console.log('clock clack');
+    userInfo_popup.classList.remove('activity');
+    popup.classList.remove('activity');
+});
+
+logOut.addEventListener('click', () => {
+        authsub.classList.remove("activity");
+        unAuthSub.style.display = "flex";
+        document.getElementById("name").value = "";
+        document.getElementById("card-number").value = "";
+    });
+
+if (authsub.classList.contains("activity")) {
+    console.log('tutka');
+    const userInfo = JSON.parse(localStorage.getItem('users'));
+    for (let user of userInfo) {
+        if (user.firstName === userName_popup.textContent && user.libraryCard === true) {
+        document.getElementById("name").value = user.firstName + ' ' + user.lastName;
+        document.getElementById("card-number").value =user.cardNumber;
+    };
+};
 };
