@@ -13,6 +13,7 @@ const userInfo_popup = document.querySelector('.popup-my-profile');
 const copyButton = document.querySelector('.copyButton');
 const close_btn_userInfo = document.querySelector('.close_btn2');
 const logOut = document.querySelector('.logOut');
+const profileInLibrary = document.querySelector(".profileInLibrary");
 
 if (navMenu) {
     navMenu.addEventListener("click", function (e) {
@@ -42,6 +43,7 @@ document.addEventListener('click', (e) => {
     const clickauthsub = e.composedPath().includes(authsub);
     const clickuserInfo_popup = e.composedPath().includes(userInfo_popup);
     const clickmyProfile = e.composedPath().includes(myProfile);
+    const clickprofileInLibrary = e.composedPath().includes(profileInLibrary);
 
 
     if ( !clickNav && !clickSub ) {
@@ -53,7 +55,7 @@ document.addEventListener('click', (e) => {
     if ( !clickUnAuthProfile && !clickUnAuthSub) {
         unAuthProfile.classList.remove('activity');
     };
-    if (!clickunLogin && !clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub && !clickunRegiter &&!clickunLogin2 &&!clickunsignButton &&!clickloginButton && clickpopup &&!clickAuthProfile &&!userInfo_popup &&!clickmyProfile && !clickpopupBuyACard) {
+    if (!clickunLogin && !clickunRegiter && !clickUnAuthProfile && !clickUnAuthSub && !clickunRegiter &&!clickunLogin2 &&!clickunsignButton &&!clickloginButton && clickpopup &&!clickAuthProfile &&!userInfo_popup &&!clickmyProfile && !clickpopupBuyACard &&!clickprofileInLibrary) {
        popup.classList.remove ("activity");
     };
     if (!clickunLogin && !clickUnAuthProfile && !clickUnAuthSub &&!clickunRegiter &&!clickunLogin2 &&!clickloginButton && clickpopup) {
@@ -395,9 +397,11 @@ const password_register = document.querySelector('.password_register');
 var userName_popup = document.querySelector(".userName");
 var userSurnam_popup = document.querySelector(".userSurname");
 var user_Icon_name_popup = document.querySelector(".user-Icon-name");
-var visitsNumber_popup = document.querySelector(".visitsNumber");
-var booksNumber_popup = document.querySelector(".visitsNumber.books");
+var visitsNumber_popup = document.querySelector(".visitsNumber.inLibrary");
+var booksNumber_popup = document.querySelector(".visitsNumber.books.inLibrary");
 var cardNumber_popup = document.querySelector(".numberOfCard");
+var visitsNumber_inProfile = document.querySelector(".visitsNumber.inProfile");
+var visitsNumber_books_inProfile = document.querySelector(".visitsNumber.books.inProfile");
 
 function validateEmail(email) {
     // Регулярное выражение для проверки формата почтового адреса 
@@ -484,16 +488,21 @@ logIN_button.addEventListener('click', () => {
             modulLogin.classList.remove ("activity");
             popup.classList.remove ("activity");
             visitsNumber_popup.innerHTML = visitsNumber;
+            visitsNumber_inProfile.innerHTML = visitsNumber;
             booksNumber_popup.innerHTML = user.booksNumber;
+            visitsNumber_books_inProfile.innerHTML = user.booksNumber;
             cardNumber_popup.innerHTML = user.cardNumber;
             userName_popup.innerHTML = user.firstName;
             userSurnam_popup.innerHTML = user.lastName;
             user_Icon_name_popup.innerHTML = user.firstName.charAt(0).toUpperCase() + user.lastName.charAt(0).toUpperCase();
-            console.log(cardNumber_LocalStorage);
             document.getElementById("name").value = user.firstName + ' ' + user.lastName;
             document.getElementById("card-number").value = cardNumber_LocalStorage;
             document.getElementById("name").setAttribute("disabled", "");
             document.getElementById("card-number").setAttribute("disabled", "");
+            document.querySelector('.librarycard-button').classList.add("hidden");
+            document.querySelector('.visits_in_libraryCard').classList.add("activity");
+            document.querySelector('.about-autorisation.nonAuth').style.display="none";
+            document.querySelector(".about-autorisation.Auth").style.display = "block";
 
             return; //выйти после успешного логина, а не выдавать 100500 ошибок идентификации пользователя
         } authError = true;
@@ -510,10 +519,21 @@ authsub.addEventListener('click', ()=> {
     authProfile.classList.add("activity");
 });
 
-myProfile.addEventListener('click', () => {
+myProfile.addEventListener('click', myProfileLook);
+
+function myProfileLook () {
     userInfo_popup.classList.add('activity');
     popup.classList.add('activity');
-})
+    const userInfo = JSON.parse(localStorage.getItem('users'));
+    for (let user of userInfo) {
+        if (user.firstName === userName_popup.textContent) {
+           visitsNumber_popup.innerHTML = user.visitsNumber;
+            booksNumber_popup.innerHTML = user.booksNumber;
+        };
+    };
+};
+
+profileInLibrary.addEventListener ('click', myProfileLook);
 
 copyButton.addEventListener('click', copyToCache);
 
@@ -533,6 +553,12 @@ logOut.addEventListener('click', () => {
         unAuthSub.style.display = "flex";
         document.getElementById("name").value = "";
         document.getElementById("card-number").value = "";
+        document.querySelector('.librarycard-button').classList.remove("hidden");
+        document.querySelector('.visits_in_libraryCard').classList.remove("activity");
+        document.querySelector('.about-autorisation.nonAuth').style.display="block";
+        document.querySelector(".about-autorisation.Auth").style.display = "none";
+        document.getElementById("name").removeAttribute("disabled", "");
+        document.getElementById("card-number").removeAttribute("disabled", "");
     });
 
 if (authsub.classList.contains("activity")) {
@@ -545,3 +571,20 @@ if (authsub.classList.contains("activity")) {
     };
 };
 };
+
+document.querySelector(".librarycard-button").addEventListener("click", () => {
+    const userInfo = JSON.parse(localStorage.getItem('users'));
+    for (let user of userInfo) {
+    if (document.getElementById("name").value === (user.firstName + ' ' + user.lastName) && document.getElementById("card-number").value === user.cardNumber) {
+        document.querySelector('.librarycard-button').classList.add("hidden");
+        document.querySelector('.visits_in_libraryCard').classList.add("activity");
+        visitsNumber_popup.innerHTML = user.visitsNumber;
+        booksNumber_popup.innerHTML = user.booksNumber;
+        setTimeout(function() {
+            document.querySelector('.librarycard-button').classList.remove("hidden");
+            document.querySelector('.visits_in_libraryCard').classList.remove("activity");
+          }, 10000);
+          return;
+    };
+    };
+});

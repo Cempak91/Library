@@ -24,6 +24,13 @@
     .favorites-items {
         flex-direction: column;
         align-items: center;
+        position: relative;
+    }
+
+    .seasons-options{
+        position: sticky;
+        top: 0px;
+        z-index: 1;
     }
 
 }
