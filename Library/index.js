@@ -368,6 +368,38 @@ const cardholderName = document.querySelector('.cardholderName');
 const postalCode = document.querySelector('.postalCode');
 const userCity = document.querySelector('.userCity');
 
+//Ограничение на количество символов в инпутах на покупку
+
+bankCardNumber.addEventListener('input', function() {
+    if (bankCardNumber.value.length > 16) {
+        bankCardNumber.value = bankCardNumber.value.slice(0, 16);
+    }
+  });
+
+  expirationCode1.addEventListener('input', function() {
+    if (expirationCode1.value.length > 2) {
+        expirationCode1.value = expirationCode1.value.slice(0, 2);
+    }
+  });
+
+  expirationCode2.addEventListener('input', function() {
+    if (expirationCode2.value.length > 2) {
+        expirationCode2.value = expirationCode2.value.slice(0, 2);
+    }
+  });
+
+  cvcNumber.addEventListener('input', function() {
+    if (cvcNumber.value.length > 3) {
+        cvcNumber.value = cvcNumber.value.slice(0, 3);
+    }
+  });
+
+  postalCode.addEventListener('input', function() {
+    if (postalCode.value.length > 6) {
+        postalCode.value = postalCode.value.slice(0, 6);
+    }
+  });
+
 function chekInputForBuy(){
 if (bankCardNumber.value !=="" && expirationCode1.value !=="" && expirationCode2.value !=="" && cvcNumber.value !=="" && cardholderName.value !=="" && postalCode.value !=="" && userCity.value !=="") {
     buyBookButton.disabled = false;
@@ -421,7 +453,7 @@ function validateEmail(email) {
 
 // Генерация рандомной буквы
 function generateLetter() {
-  var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var letters = 'ABCDEF';
   return letters.charAt(Math.floor(Math.random() * letters.length));
 };
 
@@ -457,8 +489,44 @@ signUP_button.addEventListener('click', () => {
         addUser(login, password, firstName, lastName, visitsNumber, booksNumber, cardNumber);
         modulRegister.classList.remove ("activity");
         popup.classList.remove ("activity");
+
+        const userInfo = JSON.parse(localStorage.getItem('users'));
+        for (let user of userInfo) {
+            if (login === user.username){
+            const cardNumber_LocalStorage = user.cardNumber; 
+            const iconSpan = document.querySelector('.user-Icon-name-sub')
+            const cardProfile = document.querySelector('.profileCard');
+            var visitsNumber = parseInt(user.visitsNumber);
+            unAuthSub.style.display = "none";
+            authsub.classList.add("activity");
+            iconSpan.innerHTML = user.firstName.charAt(0).toUpperCase() + user.lastName.charAt(0).toUpperCase();
+            authsub.title = user.firstName + ' ' + user.lastName;
+            user.visitsNumber = visitsNumber;
+            localStorage.setItem('users', JSON.stringify(userInfo));
+            cardProfile.innerHTML = cardNumber_LocalStorage;
+            modulLogin.classList.remove ("activity");
+            popup.classList.remove ("activity");
+            visitsNumber_popup.innerHTML = visitsNumber;
+            visitsNumber_inProfile.innerHTML = visitsNumber;
+            booksNumber_popup.innerHTML = user.booksNumber;
+            visitsNumber_books_inProfile.innerHTML = user.booksNumber;
+            cardNumber_popup.innerHTML = user.cardNumber;
+            userName_popup.innerHTML = user.firstName;
+            userSurnam_popup.innerHTML = user.lastName;
+            user_Icon_name_popup.innerHTML = user.firstName.charAt(0).toUpperCase() + user.lastName.charAt(0).toUpperCase();
+            document.getElementById("name").value = user.firstName + ' ' + user.lastName;
+            document.getElementById("card-number").value = cardNumber_LocalStorage;
+            document.getElementById("name").setAttribute("disabled", "");
+            document.getElementById("card-number").setAttribute("disabled", "");
+            document.querySelector('.librarycard-button').classList.add("hidden");
+            document.querySelector('.visits_in_libraryCard').classList.add("activity");
+            document.querySelector('.about-autorisation.nonAuth').style.display="none";
+            document.querySelector(".about-autorisation.Auth").style.display = "block";
         alert('Registration was successful');
+        return;
     };
+};
+};
 });
 
 
@@ -466,7 +534,7 @@ logIN_button.addEventListener('click', () => {
     const userInfo = JSON.parse(localStorage.getItem('users'));
     const email_input = document.querySelector('.email_input').value;
     const password_input = document.querySelector('.password_input').value;
-
+    
 
     for (let user of userInfo) {
         const username_LocalStorage = user.username;
@@ -481,6 +549,7 @@ logIN_button.addEventListener('click', () => {
             unAuthSub.style.display = "none";
             authsub.classList.add("activity");
             iconSpan.innerHTML = user.firstName.charAt(0).toUpperCase() + user.lastName.charAt(0).toUpperCase();
+            authsub.title = user.firstName + ' ' + user.lastName;
             visitsNumber +=1;
             user.visitsNumber = visitsNumber;
             localStorage.setItem('users', JSON.stringify(userInfo));
@@ -503,6 +572,7 @@ logIN_button.addEventListener('click', () => {
             document.querySelector('.visits_in_libraryCard').classList.add("activity");
             document.querySelector('.about-autorisation.nonAuth').style.display="none";
             document.querySelector(".about-autorisation.Auth").style.display = "block";
+            
 
             return; //выйти после успешного логина, а не выдавать 100500 ошибок идентификации пользователя
         } authError = true;
@@ -523,12 +593,13 @@ myProfile.addEventListener('click', myProfileLook);
 
 function myProfileLook () {
     userInfo_popup.classList.add('activity');
-    popup.classList.add('activity');
     const userInfo = JSON.parse(localStorage.getItem('users'));
+    popup.classList.add('activity');
     for (let user of userInfo) {
         if (user.firstName === userName_popup.textContent) {
            visitsNumber_popup.innerHTML = user.visitsNumber;
             booksNumber_popup.innerHTML = user.booksNumber;
+            
         };
     };
 };
@@ -543,7 +614,6 @@ function copyToCache() {
 };
 
 close_btn_userInfo.addEventListener('click', () => {
-        console.log('clock clack');
     userInfo_popup.classList.remove('activity');
     popup.classList.remove('activity');
 });
@@ -562,9 +632,12 @@ logOut.addEventListener('click', () => {
     });
 
 if (authsub.classList.contains("activity")) {
-    console.log('tutka');
     const userInfo = JSON.parse(localStorage.getItem('users'));
     for (let user of userInfo) {
+        if (user.firstName === userName_popup.textContent) {
+        authsub.setAttribute("title", `user.firstName` + ' ' + `user.lastName`);
+        console.log (`user.firstName` + ' ' + `user.lastName`);
+        };
         if (user.firstName === userName_popup.textContent && user.libraryCard === true) {
         document.getElementById("name").value = user.firstName + ' ' + user.lastName;
         document.getElementById("card-number").value =user.cardNumber;
