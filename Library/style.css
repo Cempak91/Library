@@ -1705,4 +1705,11 @@ text-transform: capitalize;
   border: 1px solid #0C0C0E;
   width: 75px;
   background-color:#FFFFFF;
+  cursor: pointer;
+}
+
+.profileInLibrary:hover {
+  border: 1px solid #BB945F;
+  background-color: #BB945F;
+  transition: all 1s ease; 
 }
