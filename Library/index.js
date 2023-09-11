@@ -656,6 +656,8 @@ document.querySelector(".librarycard-button").addEventListener("click", () => {
         setTimeout(function() {
             document.querySelector('.librarycard-button').classList.remove("hidden");
             document.querySelector('.visits_in_libraryCard').classList.remove("activity");
+            document.getElementById("name").value = '';
+            document.getElementById("card-number").value = '';
           }, 10000);
           return;
     };
